@@ -1,6 +1,6 @@
 use string_cache::DefaultAtom as Atom;
 use grammar::parse_tree::{Grammar, GrammarItem, NonterminalData, TypeRef, Alternative, ActionKind,
-                          Parameter, TypeParameter, WhereClause, TypeBound, Path};
+                          Parameter, TypeParameter, WhereClause, TypeBound, Path, NonterminalString};
 
 pub fn lower(mut g: Grammar) -> Grammar {
     assert!(g.type_parameters.is_empty());
@@ -40,11 +40,21 @@ fn lower_nt(nt: &mut NonterminalData) {
     assert!(nt.type_decl.is_none());
     nt.type_decl = Some(TypeRef::Id(Atom::from("usize")));
     for alt in nt.alternatives.iter_mut() {
-        lower_alt(alt);
+        let name = if nt.tree_symbol {
+            Some(&nt.name)
+        } else {
+            None
+        };
+        lower_alt(alt, name);
     }
 }
 
-fn lower_alt(nt: &mut Alternative) {
+fn lower_alt(nt: &mut Alternative, name: Option<&NonterminalString>) {
     assert!(nt.action.is_none());
-    nt.action = Some(ActionKind::User("92".to_string()));
+    let action = if let Some(name) = name {
+        format!("events.reduce(symbols::{}, 1); 0", name)
+    } else {
+        "0".to_string()
+    };
+    nt.action = Some(ActionKind::User(action));
 }
