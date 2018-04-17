@@ -612,6 +612,15 @@ impl Grammar {
     pub fn match_token(&self) -> Option<&MatchToken> {
         self.items.iter().flat_map(|i| i.as_match_token()).next()
     }
+
+    pub fn parse_tree_mode(&self) -> bool {
+        for annotation in self.annotations.iter() {
+            if annotation.id == Atom::from(PARSE_TREE) {
+                return true;
+            }
+        }
+        false
+    }
 }
 
 impl GrammarItem {
@@ -1083,15 +1092,6 @@ impl Path {
             None
         }
     }
-}
-
-pub fn parse_tree_mode(annotations: &[Annotation]) -> bool {
-    for annotation in annotations {
-        if annotation.id == Atom::from(PARSE_TREE) {
-            return true;
-        }
-    }
-    false
 }
 
 pub fn read_algorithm(annotations: &[Annotation], algorithm: &mut r::Algorithm) {

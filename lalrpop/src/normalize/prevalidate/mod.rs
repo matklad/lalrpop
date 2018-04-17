@@ -28,7 +28,7 @@ pub fn validate(grammar: &Grammar) -> NormResult<()> {
 
     let validator = Validator {
         grammar: grammar,
-        parse_tree_mode: parse_tree_mode(&grammar.annotations),
+        parse_tree_mode: grammar.parse_tree_mode(),
         match_token: match_token,
         extern_token: extern_token,
     };

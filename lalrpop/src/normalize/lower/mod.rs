@@ -40,7 +40,7 @@ impl<'s> LowerState<'s> {
             types: types,
             intern_token: None,
             uses_error_recovery: false,
-            parse_tree_mode: pt::parse_tree_mode(&grammar.annotations),
+            parse_tree_mode: grammar.parse_tree_mode(),
         }
     }
 
