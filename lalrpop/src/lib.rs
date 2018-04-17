@@ -23,6 +23,7 @@ extern crate sha2;
 
 #[cfg(test)]
 extern crate rand;
+extern crate docopt;
 
 // hoist the modules that define macros up earlier
 #[macro_use]

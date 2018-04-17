@@ -101,6 +101,8 @@ mod unit;
 mod match_section;
 mod match_alternatives;
 
+mod minirust;
+
 /// regression test for issue #253.
 mod partial_parse;
 

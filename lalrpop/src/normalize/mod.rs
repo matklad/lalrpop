@@ -53,6 +53,11 @@ fn lower_helper(session: &Session, grammar: pt::Grammar, validate: bool) -> Norm
             try!(prevalidate::validate(&grammar));
         }
     );
+    let grammar = if grammar.parse_tree_mode() {
+        parse_tree_mode::lower(grammar)
+    } else {
+        grammar
+    };
     let grammar = profile!(
         session,
         "Grammar resolution",
@@ -77,6 +82,8 @@ fn lower_helper(session: &Session, grammar: pt::Grammar, validate: bool) -> Norm
 
 // Check most safety conditions.
 mod prevalidate;
+
+mod parse_tree_mode;
 
 // Resolve identifiers into terminals/nonterminals etc.
 mod resolve;
