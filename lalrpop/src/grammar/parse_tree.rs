@@ -11,6 +11,7 @@ use message::builder::InlineBuilder;
 use std::fmt::{Debug, Display, Error, Formatter};
 use tls::Tls;
 use util::Sep;
+use grammar::consts::PARSE_TREE;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Grammar {
@@ -378,6 +379,7 @@ impl Visibility {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct NonterminalData {
     pub visibility: Visibility,
+    pub tree_symbol: bool,
     pub name: NonterminalString,
     pub annotations: Vec<Annotation>,
     pub span: Span,
@@ -1083,6 +1085,15 @@ impl Path {
     }
 }
 
+pub fn parse_tree_mode(annotations: &[Annotation]) -> bool {
+    for annotation in annotations {
+        if annotation.id == Atom::from(PARSE_TREE) {
+            return true;
+        }
+    }
+    false
+}
+
 pub fn read_algorithm(annotations: &[Annotation], algorithm: &mut r::Algorithm) {
     for annotation in annotations {
         if annotation.id == Atom::from(LALR) {
@@ -1094,10 +1105,12 @@ pub fn read_algorithm(annotations: &[Annotation], algorithm: &mut r::Algorithm) 
         } else if annotation.id == Atom::from(TEST_ALL) {
             algorithm.codegen = r::LrCodeGeneration::TestAll;
         } else {
-            panic!(
-                "validation permitted unknown annotation: {:?}",
-                annotation.id,
-            );
+            if annotation.id != Atom::from(PARSE_TREE) {
+                panic!(
+                    "validation permitted unknown annotation: {:?}",
+                    annotation.id,
+                );
+            }
         }
     }
 }

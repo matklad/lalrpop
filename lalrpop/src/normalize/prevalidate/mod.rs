@@ -28,6 +28,7 @@ pub fn validate(grammar: &Grammar) -> NormResult<()> {
 
     let validator = Validator {
         grammar: grammar,
+        parse_tree_mode: parse_tree_mode(&grammar.annotations),
         match_token: match_token,
         extern_token: extern_token,
     };
@@ -37,6 +38,7 @@ pub fn validate(grammar: &Grammar) -> NormResult<()> {
 
 struct Validator<'grammar> {
     grammar: &'grammar Grammar,
+    parse_tree_mode: bool,
     match_token: Option<&'grammar MatchToken>,
     extern_token: Option<&'grammar ExternToken>,
 }
@@ -48,6 +50,7 @@ impl<'grammar> Validator<'grammar> {
             Atom::from(TABLE_DRIVEN),
             Atom::from(RECURSIVE_ASCENT),
             Atom::from(TEST_ALL),
+            Atom::from(PARSE_TREE),
         ];
         for annotation in &self.grammar.annotations {
             if !allowed_names.contains(&annotation.id) {
@@ -165,6 +168,13 @@ impl<'grammar> Validator<'grammar> {
     }
 
     fn validate_alternative(&self, alternative: &Alternative) -> NormResult<()> {
+        if alternative.action.is_some() && self.parse_tree_mode {
+            return_err!(
+                alternative.span,
+                "#[parse_tree] grammars cannot have actions"
+            )
+        }
+
         try!(self.validate_expr(&alternative.expr));
 
         match norm_util::analyze_expr(&alternative.expr) {

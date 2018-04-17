@@ -53,6 +53,7 @@ pub struct Grammar {
     // the grammar proper:
     pub action_fn_defns: Vec<ActionFnDefn>,
     pub terminals: TerminalSet,
+    pub symbols: Option<Vec<String>>,
     pub nonterminals: Map<NonterminalString, NonterminalData>,
     pub token_span: Span,
     pub conversions: Map<TerminalString, Pattern<TypeRepr>>,

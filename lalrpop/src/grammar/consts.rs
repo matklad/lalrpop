@@ -24,3 +24,6 @@ pub const RECURSIVE_ASCENT: &'static str = "recursive_ascent";
 
 /// Annotation to request test-all-style code generation.
 pub const TEST_ALL: &'static str = "test_all";
+
+/// Annotation for actionless grammar.
+pub const PARSE_TREE: &'static str = "parse_tree";

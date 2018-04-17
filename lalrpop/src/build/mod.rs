@@ -333,6 +333,16 @@ fn emit_uses<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Res
     rust.write_uses("", grammar)
 }
 
+fn emit_symbols<W: Write>(symbols: &[String], rust: &mut RustWrite<W>) -> io::Result<()> {
+    rust!(rust, "pub mod symbols {{");
+    for (i, s) in symbols.iter().enumerate() {
+        rust!(rust, "pub const {}: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol({});", s, i);
+    }
+    rust!(rust, "}}");
+    Ok(())
+}
+
+
 fn emit_recursive_ascent(
     session: &Session,
     grammar: &r::Grammar,
@@ -361,6 +371,9 @@ fn emit_recursive_ascent(
 
     try!(emit_module_attributes(grammar, &mut rust));
     try!(emit_uses(grammar, &mut rust));
+    if let Some(ref symbols) = grammar.symbols {
+        emit_symbols(symbols, &mut rust)?;
+    }
 
     if grammar.start_nonterminals.is_empty() {
         println!("Error: no public symbols declared in grammar");

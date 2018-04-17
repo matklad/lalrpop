@@ -49,3 +49,4 @@ lalrpop-test/src/match_section.rs
 lalrpop-test/src/expr_module_attributes.rs
 lalrpop-test/src/associated_types.rs
 lalrpop-test/src/where_clause_with_forall.rs
+lalrpop-test/src/minirust.rs

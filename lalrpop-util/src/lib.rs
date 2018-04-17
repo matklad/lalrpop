@@ -143,6 +143,14 @@ pub struct ErrorRecovery<L, T, E> {
     pub dropped_tokens: Vec<(L, T, L)>,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
+pub struct Symbol(pub u32);
+
+trait LrEvents<L> {
+    fn reduce(&mut self, symbol: Symbol, n_symbols: usize);
+    fn shift(&mut self, symbol: Symbol, l: L, r: L);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

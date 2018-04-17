@@ -26,6 +26,7 @@ struct LowerState<'s> {
     intern_token: Option<InternToken>,
     types: r::Types,
     uses_error_recovery: bool,
+    parse_tree_mode: bool,
 }
 
 impl<'s> LowerState<'s> {
@@ -39,6 +40,7 @@ impl<'s> LowerState<'s> {
             types: types,
             intern_token: None,
             uses_error_recovery: false,
+            parse_tree_mode: pt::parse_tree_mode(&grammar.annotations),
         }
     }
 
@@ -50,6 +52,18 @@ impl<'s> LowerState<'s> {
         let internal_token_path = Path {
             absolute: false,
             ids: vec![Atom::from("Token")],
+        };
+
+        let symbols = if self.parse_tree_mode {
+            let mut symbols: Vec<_> = grammar.items.iter()
+                .filter_map(|item| item.as_nonterminal())
+                .filter(|nt| nt.tree_symbol)
+                .map(|nt| nt.name.0.to_string())
+                .collect();
+            symbols.push(String::from("TOKEN"));
+            Some(symbols)
+        } else {
+            None
         };
 
         for item in grammar.items {
@@ -188,6 +202,7 @@ impl<'s> LowerState<'s> {
             start_nonterminals: start_symbols,
             uses: uses,
             action_fn_defns: self.action_fn_defns,
+            symbols,
             nonterminals: self.nonterminals,
             conversions: self.conversions.into_iter().collect(),
             types: self.types,

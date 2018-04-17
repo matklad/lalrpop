@@ -1,0 +1,14 @@
+#[parse_tree]
+grammar;
+
+pub File = Item*;
+
+Item = Struct;
+
+Struct = struct_kw ident semi;
+
+match {
+    "struct" => struct_kw,
+    ";" => semi,
+    r"\w+" => ident,
+}

@@ -206,6 +206,7 @@ impl MacroExpander {
 
         Ok(GrammarItem::Nonterminal(NonterminalData {
             visibility: mdef.visibility.clone(),
+            tree_symbol: false,
             span: span,
             name: msym_name,
             annotations: mdef.annotations.clone(),
@@ -384,6 +385,7 @@ impl MacroExpander {
 
         Ok(GrammarItem::Nonterminal(NonterminalData {
             visibility: Visibility::Priv,
+            tree_symbol: false,
             span: span,
             name: name,
             annotations: inline(span),
@@ -429,6 +431,7 @@ impl MacroExpander {
 
                 Ok(GrammarItem::Nonterminal(NonterminalData {
                     visibility: Visibility::Priv,
+                    tree_symbol: false,
                     span: span,
                     name: name,
                     annotations: inline(span),
@@ -475,6 +478,7 @@ impl MacroExpander {
 
                 Ok(GrammarItem::Nonterminal(NonterminalData {
                     visibility: Visibility::Priv,
+                    tree_symbol: false,
                     span: span,
                     name: name.clone(),
                     annotations: vec![],
@@ -527,6 +531,7 @@ impl MacroExpander {
 
                 Ok(GrammarItem::Nonterminal(NonterminalData {
                     visibility: Visibility::Priv,
+                    tree_symbol: false,
                     span: span,
                     name: name,
                     annotations: inline(span),
@@ -564,6 +569,7 @@ impl MacroExpander {
         let name = NonterminalString(Atom::from(name));
         Ok(GrammarItem::Nonterminal(NonterminalData {
             visibility: Visibility::Priv,
+            tree_symbol: false,
             span: span,
             name: name,
             annotations: inline(span),

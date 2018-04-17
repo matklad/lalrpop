@@ -104,6 +104,7 @@ Nonterminal: GrammarItem =
     <v:Visibility> <lo:@L> <n:NonterminalName> <hi:@R>
     <t:(":" <TypeRef>)?> "=" <a:Alternatives> => {
         GrammarItem::Nonterminal(NonterminalData { visibility: v,
+                                                   tree_symbol: true,
                                                    span: Span(lo, hi),
                                                    name: n.0,
                                                    annotations: annotations,
