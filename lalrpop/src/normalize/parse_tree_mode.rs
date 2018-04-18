@@ -52,9 +52,37 @@ fn lower_nt(nt: &mut NonterminalData) {
 fn lower_alt(nt: &mut Alternative, name: Option<&NonterminalString>) {
     assert!(nt.action.is_none());
     let action = if let Some(name) = name {
-        format!("events.reduce(symbols::{}, 1); 0", name)
+        let code = r"
+trait S { fn s(&self) -> usize; }
+impl S for usize { fn s(&self) -> usize { *self } }
+impl S for Vec<usize> { fn s(&self) -> usize { self.iter().cloned().sum() } }
+macro_rules! s {
+    () => { 0 };
+    ($e:expr) => { $e.s() };
+    ($e:expr, $($es:expr),*) => { $e.s() + s!($($es),*)}
+}
+";
+        code.to_string() + &format!("events.reduce(symbols::{}, s!(<>)); 0", name)
     } else {
         "0".to_string()
     };
     nt.action = Some(ActionKind::User(action));
+}
+
+
+#[test]
+fn s_macro() {
+    trait S { fn s(&self) -> usize; }
+    impl S for usize { fn s(&self) -> usize { *self } }
+    impl S for Vec<usize> { fn s(&self) -> usize { self.iter().cloned().sum() } }
+    macro_rules! s {
+        () => { 0 };
+        ($e:expr) => { $e.s() };
+        ($e:expr, $($es:expr),*) => { $e.s() + s!($($es),*)}
+    }
+
+    assert_eq!(s!(), 0);
+    assert_eq!(s!(1), 1);
+    assert_eq!(s!(1, 2), 3);
+    assert_eq!(s!(1, 2, vec![1, 2, 3]), 9);
 }
