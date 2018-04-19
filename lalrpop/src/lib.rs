@@ -20,6 +20,8 @@ extern crate string_cache;
 extern crate term;
 extern crate unicode_xid;
 extern crate sha2;
+#[macro_use]
+extern crate parse_tree;
 
 #[cfg(test)]
 extern crate rand;

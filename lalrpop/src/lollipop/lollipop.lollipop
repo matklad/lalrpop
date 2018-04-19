@@ -3,13 +3,15 @@ tokens {
   rule_kw  = 'rule'
   l_curly  = '{'
   r_curly  = '}'
+  l_paren  = '('
+  r_paren  = ')'
   eq       = '='
   pipe     = '|'
   star     = '*'
   qmark    = '?'
   ident    = r"\w+"
-  word     = r"'.*+'"
-  regex    = r"\U{0022}.*\U{0022}"
+  word     = r"'[^']+'"
+  regex    = r##"((r"[^"]+")|(r#"("[^"#]|[^"])+"#)|(r#{2}"("#[^"#]|"[^"#]|[^"])+"#{2}))"##
 }
 
 rule file =
