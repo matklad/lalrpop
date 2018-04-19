@@ -4,7 +4,7 @@ members = [
         "lalrpop-test",
         "lalrpop-snap",
         "lalrpop-util",
-        "doc/calculator",
-        "doc/pascal/lalrpop",
-        "doc/whitespace",
+#        "doc/calculator",
+#        "doc/pascal/lalrpop",
+#        "doc/whitespace",
 ]
