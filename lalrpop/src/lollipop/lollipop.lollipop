@@ -1,0 +1,44 @@
+tokens {
+  token_kw = 'tokens'
+  rule_kw  = 'rule'
+  l_curly  = '{'
+  r_curly  = '}'
+  eq       = '='
+  pipe     = '|'
+  star     = '*'
+  qmark    = '?'
+  ident    = r"\w+"
+  word     = r"'.*+'"
+  regex    = r"\U{0022}.*\U{0022}"
+}
+
+rule file =
+  | tokens_def rule_def*
+
+rule tokens_def =
+  | 'tokens' '{' token_def* '}'
+
+rule token_def =
+  | 'ident' '=' token_re
+
+rule token_re =
+  | 'word'
+  | 'regex'
+
+rule rule_def =
+  | 'rule' ident '=' alt*
+
+rule alt =
+  | '|' symbol*
+
+rule symbol =
+  | atom op?
+
+rule op =
+  | '?'
+  | '*'
+
+rule atom =
+  | 'word'
+  | ident
+  | '(' ('|' symbol)* ')'
