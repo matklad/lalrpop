@@ -33,7 +33,6 @@ pub fn lower(mut g: Grammar) -> Grammar {
             GrammarItem::Nonterminal(ref mut nt) => {
                 lower_nt(nt, &lm)
             }
-            GrammarItem::MatchToken(ref mt) => {}
             _ => ()
         }
     }
@@ -72,7 +71,7 @@ macro_rules! s {
     ($e:expr, $($es:expr),*) => { $e.s() + s!($($es),*)}
 }
 ";
-        code.to_string() + &format!("events.reduce(symbols::{}, s!(<>)); 0", name)
+        code.to_string() + &format!("events.reduce(symbols::{}, s!(<>)); 1", name)
     } else {
         "0".to_string()
     };

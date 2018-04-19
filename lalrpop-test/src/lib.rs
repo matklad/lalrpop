@@ -2,6 +2,8 @@
 
 extern crate diff;
 extern crate lalrpop_util;
+#[macro_use]
+extern crate parse_tree;
 
 use std::cell::RefCell;
 
@@ -893,4 +895,154 @@ fn error_issue_278() {
             panic!("unexpected response from parser: {:?}", r);
         }
     }
+}
+
+
+#[test]
+fn test_minirust() {
+    use lalrpop_util::LrEvents;
+    use lalrpop_util::Symbol as GSymbol;
+    use parse_tree::{BottomUpBuilder, ParseTree, Symbol};
+
+    mod symbols {
+        symbols! {
+            register
+            FILE 0
+            WHITESPACE 1
+            ITEM 2
+            STRUCT 3
+            STRUCT_KW 4
+            SEMI 5
+            IDENT 6
+        }
+    }
+
+    fn map_symbol(s: GSymbol) -> Symbol {
+        use minirust::symbols as g;
+        match s {
+            g::File => symbols::FILE,
+            g::Item => symbols::ITEM,
+            g::Struct => symbols::STRUCT,
+            g::struct_kw_t => symbols::STRUCT_KW,
+            g::semi_t => symbols::SEMI,
+            g::ident_t => symbols::IDENT,
+            _ => panic!(),
+        }
+    }
+
+    struct Builder {
+        inner: BottomUpBuilder,
+        stack: Vec<bool>,
+        prev: usize,
+        total: usize,
+        done: bool,
+    }
+
+    impl Builder {
+        fn new(total: usize) -> Builder {
+            Builder {
+                inner: BottomUpBuilder::new(),
+                stack: Vec::new(),
+                prev: 0,
+                total,
+                done: false,
+            }
+        }
+
+        fn finish(self, text: String) -> ParseTree {
+            self.inner.finish(text)
+        }
+
+        fn shift_ws(&mut self, current: usize) {
+            let len = current - self.prev;
+            if len != 0 {
+                self.stack.push(true);
+                self.inner.shift(symbols::WHITESPACE, (len as u32).into());
+            }
+        }
+    }
+
+    impl LrEvents for Builder {
+        fn shift(&mut self, symbol: GSymbol, start: usize, end: usize) {
+            if self.done {
+                return;
+            }
+            let symbol = map_symbol(symbol);
+            self.shift_ws(start);
+            self.stack.push(false);
+            self.prev = end;
+            let len = end - start;
+            self.inner.shift(symbol, (len as u32).into())
+        }
+
+        fn reduce(&mut self, symbol: GSymbol, mut n_symbols: usize) {
+            if self.done {
+                return;
+            }
+
+            let symbol = map_symbol(symbol);
+            // trailing space
+            if symbol == symbols::FILE {
+                let total = self.total;
+                self.shift_ws(total);
+                self.done = true;
+            }
+            let mut to_reduce = 0;
+            while n_symbols > 0 {
+                let is_ws = self.stack.pop().unwrap();
+                to_reduce += 1;
+                if !is_ws {
+                    n_symbols -= 1;
+                }
+            }
+            // leading space
+            if symbol == symbols::FILE {
+                while let Some(&is_ws) = self.stack.last() {
+                    if is_ws {
+                        self.stack.pop().unwrap();
+                        to_reduce += 1;
+                    }
+                }
+            }
+            self.inner.reduce(symbol, to_reduce);
+            self.stack.push(false);
+        }
+    }
+
+    pub(crate) fn parse(text: String) -> ParseTree {
+        symbols::register();
+        let mut builder = Builder::new(text.len());
+        minirust::FileParser::new().parse(
+            &mut builder,
+            &text,
+        ).unwrap();
+        builder.finish(text)
+    }
+
+    let text = r"
+struct Foo;
+
+struct Bar;
+";
+
+    let tree = parse(text.to_string());
+    let repr = parse_tree::debug_dump(tree.root());
+    assert_eq!(repr.trim(), r#"
+FILE@[0; 26)
+  WHITESPACE@[0; 1)
+  ITEM@[1; 12)
+    STRUCT@[1; 12)
+      STRUCT_KW@[1; 7) "struct"
+      WHITESPACE@[7; 8)
+      IDENT@[8; 11) "Foo"
+      SEMI@[11; 12) ";"
+  WHITESPACE@[12; 14)
+  ITEM@[14; 25)
+    STRUCT@[14; 25)
+      STRUCT_KW@[14; 20) "struct"
+      WHITESPACE@[20; 21)
+      IDENT@[21; 24) "Bar"
+      SEMI@[24; 25) ";"
+  WHITESPACE@[25; 26)
+    "#.trim());
 }

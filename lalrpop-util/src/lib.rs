@@ -1,6 +1,3 @@
-#[macro_use]
-extern crate lazy_static;
-
 use std::error::Error;
 use std::fmt;
 
@@ -148,11 +145,10 @@ pub struct ErrorRecovery<L, T, E> {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Symbol(pub u32);
-pub mod parse_tree;
 
 pub trait LrEvents {
-    fn reduce(&mut self, symbol: Symbol, n_symbols: usize);
     fn shift(&mut self, symbol: Symbol, l: usize, r: usize);
+    fn reduce(&mut self, symbol: Symbol, n_symbols: usize);
 }
 
 #[cfg(test)]
