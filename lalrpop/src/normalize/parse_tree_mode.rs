@@ -61,17 +61,7 @@ fn lower_alt(nt: &mut Alternative, name: Option<&NonterminalString>, lm: &Lowere
     assert!(nt.action.is_none());
     lower_expr(&mut nt.expr, lm);
     let action = if let Some(name) = name {
-        let code = r"
-trait S { fn s(&self) -> usize; }
-impl S for usize { fn s(&self) -> usize { *self } }
-impl S for Vec<usize> { fn s(&self) -> usize { self.iter().cloned().sum() } }
-macro_rules! s {
-    () => { 0 };
-    ($e:expr) => { $e.s() };
-    ($e:expr, $($es:expr),*) => { $e.s() + s!($($es),*)}
-}
-";
-        code.to_string() + &format!("events.reduce(symbols::{}, s!(<>)); 1", name)
+        format!("events.reduce(symbols::{}, s!(<>)); 1", name)
     } else {
         "0".to_string()
     };
@@ -80,11 +70,15 @@ macro_rules! s {
 
 fn lower_expr(expr: &mut ExprSymbol, lm: &LoweredMatch) {
     for s in expr.symbols.iter_mut() {
+        lower_symbol(s, lm)
+    }
+
+    fn lower_symbol(s: &mut Symbol, lm: &LoweredMatch) {
         match s.kind {
             SymbolKind::Expr(ref mut expr) => lower_expr(expr, lm),
             SymbolKind::AmbiguousId(ref mut a) => lm.lower_symbol(a),
             SymbolKind::Macro(_) => (),
-            SymbolKind::Repeat(_) => (),
+            SymbolKind::Repeat(ref mut r) => lower_symbol(&mut r.symbol, lm),
             SymbolKind::Choose(_) => (),
             SymbolKind::Name(_, _) => (),
 
@@ -103,6 +97,7 @@ fn s_macro() {
     trait S { fn s(&self) -> usize; }
     impl S for usize { fn s(&self) -> usize { *self } }
     impl S for Vec<usize> { fn s(&self) -> usize { self.iter().cloned().sum() } }
+    impl S for Vec<(usize, usize)> { fn s(&self) -> usize { self.iter().map(|&(x, y)| x + y).sum() } }
     macro_rules! s {
         () => { 0 };
         ($e:expr) => { $e.s() };

@@ -1,0 +1,44 @@
+#[parse_tree]
+grammar;
+
+pub file =
+  tokens_def rule_def*;
+
+tokens_def =
+  token_kw l_curly token_def* r_curly;
+
+token_def =
+  ident eq token_re;
+
+token_re = { word, regex };
+
+rule_def =
+  rule_kw ident eq expr (pipe expr)*;
+
+expr =
+  symbol*;
+
+symbol =
+  atom op?;
+
+op =  { qmark, star };
+
+atom = { word, ident, l_paren expr r_paren };
+
+match {
+  "tokens" => token_kw,
+  "rule" => rule_kw,
+  "{" => l_curly,
+  "}" => r_curly,
+  "(" => l_paren,
+  ")" => r_paren,
+  "=" => eq,
+  "|" => pipe,
+  "*" => star,
+  "?" => qmark,
+  r"\w+" => ident,
+  r"'.+'" => word,
+  r##"(r"[^"]+")|(r#"("[^"#]|[^"])+"#)|(r#{2}"("#[^"#]|"[^"#]|[^"])+"#{2})"## => regex,
+}
+
+

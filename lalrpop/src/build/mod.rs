@@ -334,6 +334,19 @@ fn emit_uses<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Res
 }
 
 fn emit_symbols<W: Write>(symbols: &[String], rust: &mut RustWrite<W>) -> io::Result<()> {
+    rust!(rust, r#"
+trait S {{ fn s(&self) -> usize; }}
+impl S for usize {{ fn s(&self) -> usize {{ *self }} }}
+impl S for Vec<usize> {{ fn s(&self) -> usize {{ self.iter().cloned().sum() }} }}
+impl S for Option<usize> {{ fn s(&self) -> usize {{ self.into_iter().sum() }} }}
+impl S for Vec<(usize, usize)> {{ fn s(&self) -> usize {{ self.iter().map(|&(x, y)| x + y).sum() }} }}
+
+macro_rules! s {{
+    () => {{ 0 }};
+    ($e:expr) => {{ $e.s() }};
+    ($e:expr, $($es:expr),*) => {{ $e.s() + s!($($es),*)}}
+}}
+    "#);
     rust!(rust, "pub mod symbols {{");
     for (i, s) in symbols.iter().enumerate() {
         rust!(rust, "pub const {}: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol({});", s, i);

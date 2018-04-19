@@ -47,6 +47,8 @@ mod tls;
 mod tok;
 mod util;
 
+mod lollipop;
+
 #[cfg(test)]
 mod generate;
 #[cfg(test)]

@@ -13,32 +13,28 @@ tokens {
 }
 
 rule file =
-  | tokens_def rule_def*
+  tokens_def rule_def*
 
 rule tokens_def =
-  | 'tokens' '{' token_def* '}'
+  'tokens' '{' token_def* '}'
 
 rule token_def =
-  | 'ident' '=' token_re
+  'ident' '=' token_re
 
 rule token_re =
-  | 'word'
-  | 'regex'
+  'word' | 'regex'
 
 rule rule_def =
-  | 'rule' ident '=' alt*
+  'rule' ident '=' expr ('|' expr)*
 
-rule alt =
-  | '|' symbol*
+rule expr =
+  symbol*
 
 rule symbol =
-  | atom op?
+  atom op?
 
 rule op =
-  | '?'
-  | '*'
+  '?' | '*'
 
 rule atom =
-  | 'word'
-  | ident
-  | '(' ('|' symbol)* ')'
+  'word' | ident | '(' expr ')'
