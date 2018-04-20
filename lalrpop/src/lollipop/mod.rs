@@ -1,39 +1,41 @@
 mod lollipop;
+mod ast;
+mod lower;
 
+mod symbols {
+    symbols! {
+        register
+        FILE 0
+        WHITESPACE 1
+        TOKENS_DEF 2
+        TOKEN_DEF  3
+        TOKEN_RE   4
+        RULE_DEF   5
+        EXPR       6
+        SYMBOL     7
+        OP         8
+        ATOM       9
+        TOKEN_KW   10
+        RULE_KW    11
+        L_CURLY    12
+        R_CURLY    13
+        L_PAREN    14
+        R_PAREN    15
+        EQ         16
+        PIPE       17
+        STAR       18
+        QMARK      19
+        IDENT      20
+        WORD       21
+        REGEX      22
+    }
+}
 #[test]
 fn test_lollipop() {
     use lalrpop_util::LrEvents;
     use lalrpop_util::Symbol as GSymbol;
     use parse_tree::{self, BottomUpBuilder, ParseTree, Symbol};
 
-    mod symbols {
-        symbols! {
-            register
-            FILE 0
-            WHITESPACE 1
-            TOKENS_DEF 2
-            TOKEN_DEF  3
-            TOKEN_RE   4
-            RULE_DEF   5
-            EXPR       6
-            SYMBOL     7
-            OP         8
-            ATOM       9
-            TOKEN_KW   10
-            RULE_KW    11
-            L_CURLY    12
-            R_CURLY    13
-            L_PAREN    14
-            R_PAREN    15
-            EQ         16
-            PIPE       17
-            STAR       18
-            QMARK      19
-            IDENT      20
-            WORD       21
-            REGEX      22
-        }
-    }
 
     fn map_symbol(s: GSymbol) -> Symbol {
         use self::lollipop::symbols as g;
