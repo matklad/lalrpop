@@ -1,7 +1,7 @@
 [workspace]
 members = [
         "lalrpop",
-        "lalrpop-test",
+#        "lalrpop-test",
         "lalrpop-snap",
         "lalrpop-util",
 #        "doc/calculator",

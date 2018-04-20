@@ -1,3 +1,7 @@
+use lalrpop_util::LrEvents;
+use lalrpop_util::Symbol as GSymbol;
+use parse_tree::{self, BottomUpBuilder, ParseTree, Symbol};
+
 mod lollipop;
 mod ast;
 mod analysis;
@@ -31,131 +35,128 @@ mod symbols {
         REGEX      22
     }
 }
+
+pub fn parse(text: String) -> ParseTree {
+    symbols::register();
+    let mut builder = Builder::new(text.len());
+    lollipop::fileParser::new().parse(
+        &mut builder,
+        &text,
+    ).unwrap();
+    builder.finish(text)
+}
+
+
+fn map_symbol(s: GSymbol) -> Symbol {
+    use self::lollipop::symbols as g;
+    match s {
+        g::file => symbols::FILE,
+        g::tokens_def => symbols::TOKENS_DEF,
+        g::token_def => symbols::TOKEN_DEF,
+        g::token_re => symbols::TOKEN_RE,
+        g::rule_def => symbols::RULE_DEF,
+        g::expr => symbols::EXPR,
+        g::symbol => symbols::SYMBOL,
+        g::op => symbols::OP,
+        g::atom => symbols::ATOM,
+        g::token_kw_t => symbols::TOKEN_KW,
+        g::rule_kw_t => symbols::RULE_KW,
+        g::l_curly_t => symbols::L_CURLY,
+        g::r_curly_t => symbols::R_CURLY,
+        g::l_paren_t => symbols::L_PAREN,
+        g::r_paren_t => symbols::R_PAREN,
+        g::eq_t => symbols::EQ,
+        g::pipe_t => symbols::PIPE,
+        g::star_t => symbols::STAR,
+        g::qmark_t => symbols::QMARK,
+        g::ident_t => symbols::IDENT,
+        g::word_t => symbols::WORD,
+        g::regex_t => symbols::REGEX,
+        _ => panic!(),
+    }
+}
+
+struct Builder {
+    inner: BottomUpBuilder,
+    stack: Vec<bool>,
+    prev: usize,
+    total: usize,
+    done: bool,
+}
+
+impl Builder {
+    fn new(total: usize) -> Builder {
+        Builder {
+            inner: BottomUpBuilder::new(),
+            stack: Vec::new(),
+            prev: 0,
+            total,
+            done: false,
+        }
+    }
+
+    fn finish(self, text: String) -> ParseTree {
+        self.inner.finish(text)
+    }
+
+    fn shift_ws(&mut self, current: usize) {
+        let len = current - self.prev;
+        if len != 0 {
+            self.stack.push(true);
+            self.inner.shift(symbols::WHITESPACE, (len as u32).into());
+        }
+    }
+}
+
+impl LrEvents for Builder {
+    fn shift(&mut self, symbol: GSymbol, start: usize, end: usize) {
+        if self.done {
+            return;
+        }
+        let symbol = map_symbol(symbol);
+        self.shift_ws(start);
+        self.stack.push(false);
+        self.prev = end;
+        let len = end - start;
+        self.inner.shift(symbol, (len as u32).into())
+    }
+
+    fn reduce(&mut self, symbol: GSymbol, mut n_symbols: usize) {
+        if self.done {
+            return;
+        }
+
+        let symbol = map_symbol(symbol);
+        // trailing space
+        if symbol == symbols::FILE {
+            let total = self.total;
+            self.shift_ws(total);
+            self.done = true;
+        }
+        let mut to_reduce = 0;
+        while n_symbols > 0 {
+            let is_ws = self.stack.pop().unwrap();
+            to_reduce += 1;
+            if !is_ws {
+                n_symbols -= 1;
+            }
+        }
+        // leading space
+        if symbol == symbols::FILE {
+            while let Some(&is_ws) = self.stack.last() {
+                if is_ws {
+                    self.stack.pop().unwrap();
+                    to_reduce += 1;
+                }
+            }
+        }
+        self.inner.reduce(symbol, to_reduce);
+        self.stack.push(false);
+    }
+}
+
 #[test]
 fn test_lollipop() {
-    use lalrpop_util::LrEvents;
-    use lalrpop_util::Symbol as GSymbol;
-    use parse_tree::{self, BottomUpBuilder, ParseTree, Symbol};
-
-
-    fn map_symbol(s: GSymbol) -> Symbol {
-        use self::lollipop::symbols as g;
-        match s {
-            g::file => symbols::FILE,
-            g::tokens_def => symbols::TOKENS_DEF,
-            g::token_def => symbols::TOKEN_DEF,
-            g::token_re => symbols::TOKEN_RE,
-            g::rule_def => symbols::RULE_DEF,
-            g::expr => symbols::EXPR,
-            g::symbol => symbols::SYMBOL,
-            g::op => symbols::OP,
-            g::atom => symbols::ATOM,
-            g::token_kw_t => symbols::TOKEN_KW,
-            g::rule_kw_t => symbols::RULE_KW,
-            g::l_curly_t => symbols::L_CURLY,
-            g::r_curly_t => symbols::R_CURLY,
-            g::l_paren_t => symbols::L_PAREN,
-            g::r_paren_t => symbols::R_PAREN,
-            g::eq_t => symbols::EQ,
-            g::pipe_t => symbols::PIPE,
-            g::star_t => symbols::STAR,
-            g::qmark_t => symbols::QMARK,
-            g::ident_t => symbols::IDENT,
-            g::word_t => symbols::WORD,
-            g::regex_t => symbols::REGEX,
-            _ => panic!(),
-        }
-    }
-
-    struct Builder {
-        inner: BottomUpBuilder,
-        stack: Vec<bool>,
-        prev: usize,
-        total: usize,
-        done: bool,
-    }
-
-    impl Builder {
-        fn new(total: usize) -> Builder {
-            Builder {
-                inner: BottomUpBuilder::new(),
-                stack: Vec::new(),
-                prev: 0,
-                total,
-                done: false,
-            }
-        }
-
-        fn finish(self, text: String) -> ParseTree {
-            self.inner.finish(text)
-        }
-
-        fn shift_ws(&mut self, current: usize) {
-            let len = current - self.prev;
-            if len != 0 {
-                self.stack.push(true);
-                self.inner.shift(symbols::WHITESPACE, (len as u32).into());
-            }
-        }
-    }
-
-    impl LrEvents for Builder {
-        fn shift(&mut self, symbol: GSymbol, start: usize, end: usize) {
-            if self.done {
-                return;
-            }
-            let symbol = map_symbol(symbol);
-            self.shift_ws(start);
-            self.stack.push(false);
-            self.prev = end;
-            let len = end - start;
-            self.inner.shift(symbol, (len as u32).into())
-        }
-
-        fn reduce(&mut self, symbol: GSymbol, mut n_symbols: usize) {
-            if self.done {
-                return;
-            }
-
-            let symbol = map_symbol(symbol);
-            // trailing space
-            if symbol == symbols::FILE {
-                let total = self.total;
-                self.shift_ws(total);
-                self.done = true;
-            }
-            let mut to_reduce = 0;
-            while n_symbols > 0 {
-                let is_ws = self.stack.pop().unwrap();
-                to_reduce += 1;
-                if !is_ws {
-                    n_symbols -= 1;
-                }
-            }
-            // leading space
-            if symbol == symbols::FILE {
-                while let Some(&is_ws) = self.stack.last() {
-                    if is_ws {
-                        self.stack.pop().unwrap();
-                        to_reduce += 1;
-                    }
-                }
-            }
-            self.inner.reduce(symbol, to_reduce);
-            self.stack.push(false);
-        }
-    }
-
-    pub(crate) fn parse(text: String) -> ParseTree {
-        symbols::register();
-        let mut builder = Builder::new(text.len());
-        lollipop::fileParser::new().parse(
-            &mut builder,
-            &text,
-        ).unwrap();
-        builder.finish(text)
-    }
-
     let text = r####"
 tokens {
   token_kw = 'tokens'

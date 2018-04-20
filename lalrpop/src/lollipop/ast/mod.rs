@@ -4,6 +4,8 @@ use std::marker::PhantomData;
 mod generated;
 pub use self::generated::*;
 
+mod ast_ext;
+
 
 pub trait AstNode<'f>: Copy {
     fn cast(node: Node<'f>) -> Option<Self> where Self: Sized;
