@@ -35,9 +35,9 @@ mod log;
 
 mod api;
 mod build;
-mod collections;
+pub mod collections;
 mod file_text;
-mod grammar;
+pub mod grammar;
 mod lexer;
 mod lr1;
 mod message;
@@ -48,8 +48,6 @@ mod session;
 mod tls;
 mod tok;
 mod util;
-
-mod lollipop;
 
 #[cfg(test)]
 mod generate;

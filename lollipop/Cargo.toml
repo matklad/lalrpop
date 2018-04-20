@@ -1,0 +1,17 @@
+[package]
+name = "lollipop"
+version = "0.0.0"
+repository = "https://github.com/lalrpop/lalrpop"
+keywords = ["parser", "generator", "LR", "yacc", "grammar"]
+categories = ["parsing"]
+license = "Apache-2.0/MIT"
+
+[workspace]
+
+
+[dependencies]
+parse_tree = "0.0.4"
+lalrpop = { path = "../lalrpop" }
+lalrpop-util = { path = "../lalrpop-util" }
+regex = "0.2"
+string_cache = "0.7.1"

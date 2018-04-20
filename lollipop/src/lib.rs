@@ -1,3 +1,9 @@
+extern crate string_cache;
+extern crate lalrpop;
+extern crate lalrpop_util;
+#[macro_use]
+extern crate parse_tree;
+
 use lalrpop_util::LrEvents;
 use lalrpop_util::Symbol as GSymbol;
 use parse_tree::{BottomUpBuilder, ParseTree, Symbol};

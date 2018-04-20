@@ -1,8 +1,8 @@
 use string_cache::DefaultAtom as Atom;
-use grammar::parse_tree::Span;
-use grammar::repr as r;
-use grammar::parse_tree as pt;
-use collections::Map;
+use lalrpop::grammar::parse_tree::Span;
+use lalrpop::grammar::repr as r;
+use lalrpop::grammar::parse_tree as pt;
+use lalrpop::collections::Map;
 use super::ast;
 use super::analysis::Analysis;
 
@@ -33,7 +33,7 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
         let ty = r::TypeRepr::Ref {
             lifetime: None,
             mutable: true,
-            referent: Box::new((e_type_repr.clone())),
+            referent: Box::new(e_type_repr.clone()),
         };
         vec![r::Parameter { name: Atom::from("events"), ty }]
     };
@@ -92,4 +92,8 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
         module_attributes: Vec::new(),
     };
     Some(g)
+}
+
+fn lower_tokenizer(a: &mut Analysis, file: ast::File) -> Option<(pt::TypeParameter, r::InternToken)> {
+    None
 }
