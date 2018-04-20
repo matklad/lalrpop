@@ -1,0 +1,56 @@
+{
+    "name": "lollipop",
+    "displayName": "lollipop",
+    "description": "bla",
+    "license": "MIT",
+    "repository": "not yet",
+    "version": "0.0.1",
+    "publisher": "matklad",
+    "engines": {
+        "vscode": "^1.18.0"
+    },
+    "devDependencies": {
+        "neon-cli": "^0.1.22",
+        "typescript": "^2.6.2",
+        "vscode": "^1.1.10",
+        "@types/node": "^6.0.40",
+        "vsce": "^1.31.1"
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "install": "neon build",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "main": "./out/src/main",
+    "contributes": {
+        "languages": [
+            {
+                "id": "lollipop",
+                "extensions": [
+                    ".lollipop"
+                ]
+            }
+        ],
+        "commands": [
+            {
+                "command": "lollipop.semanticSelection",
+                "title": "Semantic Selection"
+            },
+            {
+                "command": "lollipop.showSyntaxTree",
+                "title": "Show Syntax Tree"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "lollipop.semanticSelection",
+                "key": "ctrl+w",
+                "when": "editorTextFocus && editorLangId == lollipop"
+            }
+        ]
+    },
+    "activationEvents": [
+        "onLanguage:lollipop"
+    ]
+}

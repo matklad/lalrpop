@@ -1,0 +1,3 @@
+code:
+    npm install && ./node_modules/vsce/out/vsce package
+    code --install-extension ./lollipop-0.0.1.vsix

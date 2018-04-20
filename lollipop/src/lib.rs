@@ -12,6 +12,7 @@ mod lollipop;
 mod ast;
 mod analysis;
 mod lower;
+pub mod ide;
 
 mod symbols {
     symbols! {
