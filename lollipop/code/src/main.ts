@@ -9,7 +9,7 @@ const backend = require("../../native")
 const lollipopDiagnostics = vscode.languages.createDiagnosticCollection("lollipop")
 
 export function activate(context: vscode.ExtensionContext) {
-    let plugin = createPlugin(backend, context.subscriptions, false, lollipopDiagnostics)
+    let plugin = createPlugin(backend, context.subscriptions, true, lollipopDiagnostics)
 
     let commands = [
         ["lollipop.semanticSelection", "extendSelection"],

@@ -1,3 +1,6 @@
+extern crate serde;
+#[macro_use]
+extern crate serde_derive;
 extern crate string_cache;
 extern crate lalrpop;
 extern crate lalrpop_util;
@@ -10,6 +13,7 @@ use parse_tree::{BottomUpBuilder, ParseTree, Symbol};
 
 mod lollipop;
 mod ast;
+mod visitor;
 mod analysis;
 mod lower;
 pub mod ide;

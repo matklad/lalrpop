@@ -9,7 +9,7 @@ workspace = ".."
 [dependencies]
 diff = "0.1.9"
 regex = "0.2.1"
-parse_tree = "0.0.4"
+parse_tree = "0.0.5"
 
 [dependencies.lalrpop-util]
 path = "../lalrpop-util"

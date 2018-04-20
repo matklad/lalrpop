@@ -58,4 +58,20 @@ pub mod search {
             LeafAtOffset::Between(left, right) => ancestor(left).or_else(|| ancestor(right)),
         }
     }
+
+    pub mod traversal {
+        use parse_tree::{Node};
+
+        pub fn bottom_up<'f, F: FnMut(Node<'f>)>(node: Node<'f>, mut f: F)
+        {
+            go(node, &mut f);
+
+            fn go<'f, F: FnMut(Node<'f>)>(node: Node<'f>, f: &mut F) {
+                for child in node.children() {
+                    go(child, f)
+                }
+                f(node);
+            }
+        }
+    }
 }

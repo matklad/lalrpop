@@ -74,11 +74,18 @@ pub fn syntax_tree(call: Call) -> JsResult<JsValue> {
     ret(scope, result)
 }
 
+pub fn highlight(call: Call) -> JsResult<JsValue> {
+    let scope = call.scope;
+    let mut handle = call.arguments.require(scope, 0)?.check::<JsFileHandle>()?;
+    let result = handle.grab(|file| file.highlight());
+    ret(scope, result)
+}
+
 register_module!(m, {
     m.export("parse", parse)?;
     m.export("syntaxTree", syntax_tree)?;
+    m.export("highlight", highlight)?;
 //    m.export("extendSelection", generic_backend::extend_selection::<FileWithAnalysis, JsFallEditorFile>)?;
-//    m.export("highlight", generic_backend::highlight::<FileWithAnalysis, JsFallEditorFile>)?;
     Ok(())
 });
 
