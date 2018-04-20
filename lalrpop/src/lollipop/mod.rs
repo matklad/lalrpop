@@ -1,6 +1,6 @@
 use lalrpop_util::LrEvents;
 use lalrpop_util::Symbol as GSymbol;
-use parse_tree::{self, BottomUpBuilder, ParseTree, Symbol};
+use parse_tree::{BottomUpBuilder, ParseTree, Symbol};
 
 mod lollipop;
 mod ast;

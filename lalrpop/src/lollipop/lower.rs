@@ -21,35 +21,38 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
     };
 
     let e = Atom::from("E");
+    let e_type_repr = r::TypeRepr::Nominal(r::NominalTypeRepr {
+        path: pt::Path {
+            absolute: false,
+            ids: vec![e.clone()],
+        },
+        types: Vec::new(),
+    });
     let type_parameters = vec![pt::TypeParameter::Id(e.clone())];
-//    let parameters = {
-//        let p = r::TypeRepr::Ref {
-//            lifetime: None,
-//            mutable: true,
-//            referent: Box::new(r::TypeRepr::Nominal(r::NominalTypeRepr {
-//                path: pt::Path {
-//                    absolute: false,
-//                    ids: vec![Atom::from("events")],
-//                },
-//                types: Vec::new(),
-//            })),
-//        };
-//        vec![p]
-//    };
-//    let where_clauses = {
-//        let bounds = vec![pt::TypeBound::Trait {
-//            forall: None,
-//            path: pt::Path {
-//                absolute: false,
-//                ids: vec![Atom::from("__lalrpop_util") /* TODO: do properly */,
-//                          Atom::from("LrEvents")],
-//            },
-//            parameters: vec![],
-//        }];
-//        g.where_clauses = vec![
-//            pt::WhereClause::Type { forall: None, ty: pt::TypeRef::Id(e.clone()), bounds }
-//        ];
-//    };
+    let parameters = {
+        let ty = r::TypeRepr::Ref {
+            lifetime: None,
+            mutable: true,
+            referent: Box::new((e_type_repr.clone())),
+        };
+        vec![r::Parameter { name: Atom::from("events"), ty }]
+    };
+    let where_clauses = {
+        let bounds = vec![pt::TypeBound::Trait {
+            forall: None,
+            path: pt::Path {
+                absolute: false,
+                ids: vec![Atom::from("__lalrpop_util") /* TODO: do properly */,
+                          Atom::from("LrEvents")],
+            },
+            parameters: vec![],
+        }];
+        vec![pt::WhereClause::Type {
+            forall: None,
+            ty: e_type_repr.clone(),
+            bounds,
+        }]
+    };
 
 
     let g = r::Grammar {
@@ -62,8 +65,8 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
         start_nonterminals,
         uses: Vec::new(),
         type_parameters,
-        parameters: Vec::new(),
-        where_clauses: Vec::new(),
+        parameters,
+        where_clauses,
         intern_token: None,
         action_fn_defns: Vec::new(),
         terminals: r::TerminalSet {
