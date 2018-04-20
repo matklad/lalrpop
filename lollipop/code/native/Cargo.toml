@@ -17,6 +17,6 @@ neon-build = "0.1.22"
 [dependencies]
 neon = "0.1.22"
 serde = "1"
-neon-serde = { git = "https://github.com/GabrielCastro/neon-serde", rev = "391a0b420eadfdb4e6d0ceef2a8cdf13ceb06143" }
+neon-serde = "0.0.3"
 lazy_static = "0.2"
 lollipop = { path = "../.." }

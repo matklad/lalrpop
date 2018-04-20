@@ -4,15 +4,15 @@ extern crate serde;
 extern crate neon_serde;
 extern crate lollipop;
 
-use std::sync::{Mutex, Arc};
+use std::sync::Arc;
 use std::ops;
 use std::iter;
 
 use neon::vm::{Call, JsResult, Lock, VmResult, This, Arguments};
 use neon::mem::Handle;
-use neon::scope::{Scope, RootScope};
+use neon::scope::{RootScope};
 use neon::js::class::{Class, JsClass};
-use neon::js::{JsValue, JsNull, JsString, JsFunction};
+use neon::js::{JsValue, JsString, JsFunction};
 
 use serde::Serialize;
 use serde::de::DeserializeOwned;
