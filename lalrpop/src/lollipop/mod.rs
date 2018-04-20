@@ -1,5 +1,6 @@
 mod lollipop;
 mod ast;
+mod analysis;
 mod lower;
 
 mod symbols {
