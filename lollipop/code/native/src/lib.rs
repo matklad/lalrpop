@@ -19,7 +19,10 @@ use serde::de::DeserializeOwned;
 
 use neon_serde::{from_value, to_value};
 
-use lollipop::ide;
+use lollipop::{
+    TextRange,
+    ide
+};
 
 #[derive(Clone)]
 pub struct FileHandle {
@@ -81,11 +84,20 @@ pub fn highlight(call: Call) -> JsResult<JsValue> {
     ret(scope, result)
 }
 
+pub fn extend_selection(call: Call) -> JsResult<JsValue> {
+    let scope = call.scope;
+    let mut handle = call.arguments.require(scope, 0)?.check::<JsFileHandle>()?;
+    let range: TextRange = arg(scope, &call.arguments, 1)?;
+    let result = handle.grab(|file| file.extend_selection(range));
+    ret(scope, result)
+}
+
+
 register_module!(m, {
     m.export("parse", parse)?;
     m.export("syntaxTree", syntax_tree)?;
     m.export("highlight", highlight)?;
-//    m.export("extendSelection", generic_backend::extend_selection::<FileWithAnalysis, JsFallEditorFile>)?;
+    m.export("extendSelection", extend_selection)?;
     Ok(())
 });
 
