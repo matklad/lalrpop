@@ -7,7 +7,9 @@ pub struct DiagnosticSink {
 
 impl DiagnosticSink {
     pub fn new() -> DiagnosticSink {
-        DiagnosticSink::new()
+        DiagnosticSink {
+            diagnostics: vec![]
+        }
     }
 
     pub fn error<M: Into<String>>(&mut self, node: Node, message: M) {

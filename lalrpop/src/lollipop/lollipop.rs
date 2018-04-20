@@ -13,8 +13,9 @@ macro_rules! s {
     ($e:expr) => { $e.s() };
     ($e:expr, $($es:expr),*) => { $e.s() + s!($($es),*)}
 }
-    
+
 pub mod symbols {
+    #![allow(bad_style)]
     pub const file: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(0);
     pub const tokens_def: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(1);
     pub const token_def: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(2);
