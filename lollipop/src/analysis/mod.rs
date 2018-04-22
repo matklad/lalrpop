@@ -1,4 +1,5 @@
 mod diagnostics;
+mod lexer;
 
 use self::diagnostics::DiagnosticSink;
 use super::ast;

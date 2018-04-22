@@ -41,7 +41,7 @@ pub mod grammar;
 mod lexer;
 mod lr1;
 mod message;
-mod normalize;
+pub mod normalize;
 mod parser;
 mod kernel_set;
 mod session;
