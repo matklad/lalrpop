@@ -62,6 +62,6 @@ fn lexer_diagnostics() {
 
     rule start = foo
     "#, r#"
-5 85: invalid regular expression: Error parsing regex near 'r"("' at character offset 2: Unclosed parenthesis.
+75 79: invalid regular expression: Error parsing regex near 'r"("' at character offset 2: Unclosed parenthesis.
     "#)
 }

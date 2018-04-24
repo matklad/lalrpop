@@ -14,7 +14,7 @@ use ast::{self, AstNode};
 use super::Analysis;
 
 impl Analysis {
-    pub fn match_block(&mut self, file: ast::File) -> MatchBlock {
+    fn match_block<'p>(&mut self, file: ast::File<'p>) -> MatchBlock<'p> {
         let mut match_block = MatchBlock::default();
         let n_tokens = file.tokens_def().tokens().count();
         for (idx, mc) in file.tokens_def().tokens().enumerate() {
@@ -24,12 +24,11 @@ impl Analysis {
                 ast::TokenRe::Word(l) => TerminalLiteral::Quoted(Atom::from(l.node().text())),
                 ast::TokenRe::Regex(l) => TerminalLiteral::Regex(Atom::from(l.node().text())),
             };
-            let span = as_span(mc.node().range());
             if let Err(msg) = match_block.add_match_entry(
                 precedence,
                 lit,
                 TerminalString::Bare(Atom::from(mc.name().as_str())),
-                span,
+                mc.re(),
             ) {
                 self.sink.error(
                     mc.node(),
@@ -64,12 +63,12 @@ impl Analysis {
                     match re::parse_regex(&s) {
                         Ok(regex) => regexs.push(regex),
                         Err(error) => {
-                            let literal_span = spans[&match_entry.match_literal];
+                            let node = spans[&match_entry.match_literal].node();
                             // FIXME -- take offset into account for
                             // span; this requires knowing how many #
                             // the user used, which we do not track
                             self.sink.error(
-                                file.tokens_def().node(),
+                                node,
                                 format!("invalid regular expression: {}", error),
                             );
                         }
@@ -89,42 +88,26 @@ fn as_span(r: TextRange) -> Span {
 /// Data summarizing the `match { }` block, along with any literals we
 /// scraped up.
 #[derive(Default)]
-pub struct MatchBlock {
+pub struct MatchBlock<'p> {
     /// This map stores the `match { }` entries. If `match_catch_all`
     /// is true, then we will grow this set with "identity mappings"
     /// for new literals that we find.
     pub match_entries: Vec<MatchEntry>,
 
-    /// The names of all terminals the user can legally type. If
-    /// `match_catch_all` is true, then if we encounter additional
-    /// terminal literals in the grammar, we will add them to this
-    /// set.
-    pub match_user_names: Set<TerminalString>,
-
-    /// For each terminal literal that we have to match, the span
-    /// where it appeared in user's source.  This can either be in the
-    /// `match { }` section or else in the grammar somewhere (if added
-    /// due to a catch-all, or there is no match section).
-    pub spans: Map<TerminalLiteral, Span>,
-
-    /// True if we should permit unrecognized literals to be used.
-    pub catch_all: bool,
+    pub spans: Map<TerminalLiteral, ast::TokenRe<'p>>,
 }
 
-impl MatchBlock {
+impl<'p> MatchBlock<'p> {
     fn add_match_entry(
         &mut self,
         match_group_precedence: usize,
         sym: TerminalLiteral,
         user_name: TerminalString,
-        span: Span,
+        re: ast::TokenRe<'p>,
     ) -> Result<(), String> {
-        if let Some(_old_span) = self.spans.insert(sym.clone(), span) {
-            return Err(format!("multiple match entries for `{}`", sym));
+        if let Some(_old_span) = self.spans.insert(sym.clone(), re) {
+            return Err("duplicate match entries".to_string());
         }
-
-        // NB: It's legal for multiple regex to produce same terminal.
-        self.match_user_names.insert(user_name.clone());
 
         self.match_entries.push(MatchEntry {
             precedence: match_group_precedence * 2 + sym.base_precedence(),
