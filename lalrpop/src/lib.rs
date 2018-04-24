@@ -38,7 +38,7 @@ mod build;
 pub mod collections;
 mod file_text;
 pub mod grammar;
-mod lexer;
+pub mod lexer;
 mod lr1;
 mod message;
 pub mod normalize;

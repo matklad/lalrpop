@@ -1,3 +1,4 @@
+pub use ide::{Diagnostic, Severity};
 use parse_tree::TextRange;
 use parse_tree::Node;
 
@@ -12,30 +13,27 @@ impl DiagnosticSink {
         }
     }
 
+    pub fn into_diagnostics(self) -> Vec<Diagnostic> {
+        self.diagnostics
+    }
+
     pub fn error<M: Into<String>>(&mut self, node: Node, message: M) {
         let message = message.into();
         let location = node.range();
-        self.diagnostics.push(Diagnostic { location: Some(location), message })
+        self.push_err(Some(location), message);
     }
 
     pub fn file_error<M: Into<String>>(&mut self, message: M) {
-        self.diagnostics.push(Diagnostic {
-            location: None,
-            message: message.into(),
-        })
+        self.push_err(None, message.into())
+    }
+
+    fn push_err(&mut self, location: Option<TextRange>, message: String) {
+        let err = Diagnostic {
+            range: location.unwrap_or(TextRange::from_len(0.into(), 1.into())),
+            severity: Severity::Error,
+            message,
+        };
+        self.diagnostics.push(err)
     }
 }
 
-pub struct Diagnostic {
-    location: Option<TextRange>,
-    message: String,
-}
-
-impl Diagnostic {
-    pub fn location(&self) -> Option<TextRange> {
-        self.location
-    }
-    pub fn message(&self) -> &str {
-        &self.message
-    }
-}

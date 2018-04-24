@@ -29,10 +29,10 @@ export function createPlugin(
         }
         if (diganosticCollection != null) {
             diganosticCollection.clear()
-//            diganosticCollection.set(
-//                editor.document.uri,
-//                file.diagnostics()
-//            )
+            diganosticCollection.set(
+                editor.document.uri,
+                file.diagnostics()
+            )
         }
     }
 
@@ -95,6 +95,16 @@ export class EditorFile {
     structure(): Array<FileStructureNode> { return this.call("structure") }
 
     highlight(): Array<[[number, number], string]> { return this.call("highlight") }
+    diagnostics(): Array<vscode.Diagnostic> {
+        return this.call("diagnostics").map((d) => {
+            let range = toVsRange(this.doc, d.range)
+            let severity = d.severity == "Error"
+                ? vscode.DiagnosticSeverity.Error
+                : vscode.DiagnosticSeverity.Warning
+
+            return new vscode.Diagnostic(range, d.message, severity)
+        })
+    }
 
     call(method: string, ...args) {
         log(`${method} ${args}`)

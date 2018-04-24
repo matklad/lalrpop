@@ -27,12 +27,11 @@ mod symbols {
         WHITESPACE 1
         TOKENS_DEF 2
         TOKEN_DEF  3
-        TOKEN_RE   4
         RULE_DEF   5
         EXPR       6
         SYMBOL     7
         OP         8
-        ATOM       9
+        PAREN_EXPR 9
         TOKEN_KW   10
         RULE_KW    11
         L_CURLY    12
@@ -66,12 +65,11 @@ fn map_symbol(s: GSymbol) -> Symbol {
         g::file => symbols::FILE,
         g::tokens_def => symbols::TOKENS_DEF,
         g::token_def => symbols::TOKEN_DEF,
-        g::token_re => symbols::TOKEN_RE,
         g::rule_def => symbols::RULE_DEF,
         g::expr => symbols::EXPR,
         g::symbol => symbols::SYMBOL,
         g::op => symbols::OP,
-        g::atom => symbols::ATOM,
+        g::paren_expr => symbols::PAREN_EXPR,
         g::token_kw_t => symbols::TOKEN_KW,
         g::rule_kw_t => symbols::RULE_KW,
         g::l_curly_t => symbols::L_CURLY,
@@ -85,7 +83,7 @@ fn map_symbol(s: GSymbol) -> Symbol {
         g::ident_t => symbols::IDENT,
         g::word_t => symbols::WORD,
         g::regex_t => symbols::REGEX,
-        _ => panic!(),
+        _ => panic!("unknown symbol {:?}", s),
     }
 }
 
@@ -194,9 +192,9 @@ rule tokens_def =
   'tokens' '{' token_def* '}'
 
 rule token_def =
-  'ident' '=' token_re
+  'ident' '=' _token_re
 
-rule token_re =
+rule _token_re =
   'word' | 'regex'
 
 rule rule_def =
@@ -205,14 +203,17 @@ rule rule_def =
 rule expr =
   symbol*
 
+rule paren_expr =
+  '(' expr ')'
+
 rule symbol =
-  atom op?
+  _atom op?
 
 rule op =
   '?' | '*'
 
-rule atom =
-  'word' | ident | '(' expr ')'
+rule _atom =
+  'word' | ident | paren_expr
 "####;
 
     let tree = parse(text.to_string());

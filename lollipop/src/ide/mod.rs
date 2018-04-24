@@ -3,10 +3,22 @@ use super::parse;
 
 mod highlight;
 use self::highlight::Highlights;
+
 use parse_tree::TextRange;
-use parse_tree::search::find_leaf_at_offset;
-use parse_tree::search::find_covering_node;
-use parse_tree::search::ancestors;
+use parse_tree::search::{find_leaf_at_offset, ancestors, find_covering_node};
+
+use ast::{self, AstNode};
+use analysis::Analysis;
+
+#[derive(Serialize, Debug, Copy, Clone)]
+pub enum Severity { Error, Warning }
+
+#[derive(Serialize, Debug, Clone)]
+pub struct Diagnostic {
+    pub range: TextRange,
+    pub severity: Severity,
+    pub message: String
+}
 
 pub struct File {
     parse_tree: ParseTree
@@ -25,6 +37,11 @@ impl File {
 
     pub fn highlight(&self) -> Highlights {
         highlight::highlight(&self.parse_tree)
+    }
+
+    pub fn diagnostics(&self) -> Vec<Diagnostic> {
+        let file = ast::File::cast(self.parse_tree.root()).unwrap();
+        Analysis::analyse_fully(file)
     }
 
     pub fn extend_selection(&self, range: TextRange) -> Option<TextRange> {

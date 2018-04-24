@@ -13,32 +13,30 @@ macro_rules! s {
     ($e:expr) => { $e.s() };
     ($e:expr, $($es:expr),*) => { $e.s() + s!($($es),*)}
 }
-
+    
 pub mod symbols {
-    #![allow(bad_style)]
     pub const file: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(0);
     pub const tokens_def: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(1);
     pub const token_def: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(2);
-    pub const token_re: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(3);
-    pub const rule_def: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(4);
-    pub const expr: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(5);
-    pub const symbol: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(6);
-    pub const op: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(7);
-    pub const atom: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(8);
-    pub const token_kw_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(9);
-    pub const rule_kw_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(10);
-    pub const l_curly_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(11);
-    pub const r_curly_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(12);
-    pub const l_paren_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(13);
-    pub const r_paren_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(14);
-    pub const eq_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(15);
-    pub const pipe_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(16);
-    pub const star_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(17);
-    pub const qmark_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(18);
-    pub const ident_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(19);
-    pub const word_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(20);
-    pub const regex_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(21);
-    pub const TOKEN: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(22);
+    pub const rule_def: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(3);
+    pub const expr: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(4);
+    pub const symbol: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(5);
+    pub const op: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(6);
+    pub const paren_expr: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(7);
+    pub const token_kw_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(8);
+    pub const rule_kw_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(9);
+    pub const l_curly_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(10);
+    pub const r_curly_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(11);
+    pub const l_paren_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(12);
+    pub const r_paren_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(13);
+    pub const eq_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(14);
+    pub const pipe_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(15);
+    pub const star_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(16);
+    pub const qmark_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(17);
+    pub const ident_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(18);
+    pub const word_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(19);
+    pub const regex_t: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(20);
+    pub const TOKEN: super::__lalrpop_util::Symbol = super::__lalrpop_util::Symbol(21);
 }
 
 #[cfg_attr(rustfmt, rustfmt_skip)]
@@ -68,100 +66,102 @@ mod __parse__file {
         // State 3
         0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0,
         // State 4
-        0, 0, -48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, -51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 5
         0, 16, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0,
         // State 6
-        0, -18, 0, 0, 0, 0, -18, 0, 0, 0, 0, 0, 0,
+        0, -20, 0, 0, 0, 0, -20, 0, 0, 0, 0, 0, 0,
         // State 7
-        0, 0, 0, 0, 0, 0, 0, 0, 0, -33, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, -36, 0, 0, 0,
         // State 8
         0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0,
         // State 9
         0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 10
-        0, -35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, -38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 11
         21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 12
-        0, 0, 0, 0, 0, 0, 0, 0, 0, -51, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, -52, 0, 0, 0,
         // State 13
-        0, -46, 0, 0, 0, 0, -46, 0, 0, 0, 0, 0, 0,
+        0, -49, 0, 0, 0, 0, -49, 0, 0, 0, 0, 0, 0,
         // State 14
         0, 16, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0,
         // State 15
-        -17, -17, 0, -17, -17, -17, 0, -17, 0, -17, -17, 0, -17,
+        -19, -19, 0, -19, -19, -19, 0, -19, 0, -19, -19, 0, -19,
         // State 16
-        0, 0, 0, 0, 0, 0, 0, 0, 0, -26, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, -29, 0, 0, 0,
         // State 17
-        0, 0, 0, 0, 0, 0, 0, 0, 0, -34, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, -37, 0, 0, 0,
         // State 18
         21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 19
         0, 0, 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 29,
         // State 20
-        0, -12, 0, -12, -12, 0, 0, 0, -12, -12, 0, 0, -12,
+        0, -14, 0, -14, -14, 0, 0, 0, -14, -14, 0, 0, -14,
         // State 21
-        0, 0, 0, 0, 0, 0, 0, 0, 0, -52, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, -53, 0, 0, 0,
         // State 22
-        0, -47, 0, 0, 0, 0, -47, 0, 0, 0, 0, 0, 0,
-        // State 23
-        0, 16, 0, 37, -13, 0, 0, 0, 0, -13, 0, 0, 29,
-        // State 24
         0, -50, 0, 0, 0, 0, -50, 0, 0, 0, 0, 0, 0,
+        // State 23
+        0, 16, 0, 38, -15, 0, 0, 0, 0, -15, 0, 0, 29,
+        // State 24
+        0, -46, 0, 0, 0, 0, -46, 0, 0, 0, 0, 0, 0,
         // State 25
-        0, -43, 0, 0, 0, 0, -43, 0, 0, 0, 0, 0, 0,
+        0, -13, 0, 0, 0, 0, -13, 0, 0, 0, 0, 0, 0,
         // State 26
-        0, -49, 0, 0, 0, 0, -49, 0, 0, 0, 0, 0, 0,
+        0, -12, 0, 0, 0, 0, -12, 0, 0, 0, 0, 0, 0,
         // State 27
-        0, -28, 0, 0, 0, 0, -28, 0, 0, 0, 0, 0, 0,
+        0, -31, 0, 0, 0, 0, -31, 0, 0, 0, 0, 0, 0,
         // State 28
-        0, -53, 0, -53, -53, -53, -53, -53, 0, -53, -53, 0, -53,
+        0, -54, 0, -54, -54, -54, -54, -54, 0, -54, -54, 0, -54,
         // State 29
-        0, -38, 0, -38, -38, 41, 0, -38, 0, -38, 42, 0, -38,
+        0, -41, 0, -41, -41, 42, 0, -41, 0, -41, 43, 0, -41,
         // State 30
-        0, 0, 0, 0, 45, 0, 0, 0, 0, -29, 0, 0, 0,
+        0, 0, 0, 0, 46, 0, 0, 0, 0, -32, 0, 0, 0,
         // State 31
         0, -10, 0, -10, -10, -10, 0, -10, 0, -10, -10, 0, -10,
         // State 32
-        0, 16, 0, 37, 0, 0, 0, -13, 0, 0, 0, 0, 29,
+        0, 16, 0, 38, 0, 0, 0, -15, 0, 0, 0, 0, 29,
         // State 33
-        0, -41, 0, -41, -41, 0, 0, -41, 0, -41, 0, 0, -41,
-        // State 34
-        0, 16, 0, 37, -14, 0, 0, -14, 0, -14, 0, 0, 29,
-        // State 35
-        0, -9, 0, -9, -9, -9, 0, -9, 0, -9, -9, 0, -9,
-        // State 36
-        0, -19, 0, -19, 0, 0, 0, -19, 0, 0, 0, 0, -19,
-        // State 37
-        0, -37, 0, -37, -37, 0, 0, -37, 0, -37, 0, 0, -37,
-        // State 38
-        0, -20, 0, -20, -20, 0, 0, -20, 0, -20, 0, 0, -20,
-        // State 39
-        0, -21, 0, -21, -21, 0, 0, -21, 0, -21, 0, 0, -21,
-        // State 40
-        0, -25, 0, -25, -25, 0, 0, -25, 0, -25, 0, 0, -25,
-        // State 41
-        0, -36, 0, -36, -36, 0, 0, -36, 0, -36, 0, 0, -36,
-        // State 42
-        0, 0, 0, 0, 45, 0, 0, 0, 0, -30, 0, 0, 0,
-        // State 43
-        0, 16, 0, 37, -13, 0, 0, 0, 0, -13, 0, 0, 29,
-        // State 44
-        0, -24, 0, -24, -24, 0, 0, 0, 0, -24, 0, 0, -24,
-        // State 45
-        0, 0, 0, 0, 0, 0, 0, 51, 0, 0, 0, 0, 0,
-        // State 46
-        0, -42, 0, -42, -42, 0, 0, -42, 0, -42, 0, 0, -42,
-        // State 47
-        0, 16, 0, 37, -13, 0, 0, 0, 0, -13, 0, 0, 29,
-        // State 48
-        0, 0, 0, 0, -4, 0, 0, 0, 0, -4, 0, 0, 0,
-        // State 49
         0, -11, 0, -11, -11, -11, 0, -11, 0, -11, -11, 0, -11,
+        // State 34
+        0, -44, 0, -44, -44, 0, 0, -44, 0, -44, 0, 0, -44,
+        // State 35
+        0, 16, 0, 38, -16, 0, 0, -16, 0, -16, 0, 0, 29,
+        // State 36
+        0, -9, 0, -9, -9, -9, 0, -9, 0, -9, -9, 0, -9,
+        // State 37
+        0, -21, 0, -21, 0, 0, 0, -21, 0, 0, 0, 0, -21,
+        // State 38
+        0, -40, 0, -40, -40, 0, 0, -40, 0, -40, 0, 0, -40,
+        // State 39
+        0, -22, 0, -22, -22, 0, 0, -22, 0, -22, 0, 0, -22,
+        // State 40
+        0, -23, 0, -23, -23, 0, 0, -23, 0, -23, 0, 0, -23,
+        // State 41
+        0, -28, 0, -28, -28, 0, 0, -28, 0, -28, 0, 0, -28,
+        // State 42
+        0, -39, 0, -39, -39, 0, 0, -39, 0, -39, 0, 0, -39,
+        // State 43
+        0, 0, 0, 0, 46, 0, 0, 0, 0, -33, 0, 0, 0,
+        // State 44
+        0, 16, 0, 38, -15, 0, 0, 0, 0, -15, 0, 0, 29,
+        // State 45
+        0, -27, 0, -27, -27, 0, 0, 0, 0, -27, 0, 0, -27,
+        // State 46
+        0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0, 0,
+        // State 47
+        0, -45, 0, -45, -45, 0, 0, -45, 0, -45, 0, 0, -45,
+        // State 48
+        0, 16, 0, 38, -15, 0, 0, 0, 0, -15, 0, 0, 29,
+        // State 49
+        0, 0, 0, 0, -4, 0, 0, 0, 0, -4, 0, 0, 0,
         // State 50
-        0, -27, 0, -27, -27, -27, 0, -27, 0, -27, -27, 0, -27,
+        0, -26, 0, -26, -26, -26, 0, -26, 0, -26, -26, 0, -26,
         // State 51
+        0, -30, 0, -30, -30, -30, 0, -30, 0, -30, -30, 0, -30,
+        // State 52
         0, 0, 0, 0, -5, 0, 0, 0, 0, -5, 0, 0, 0,
     ];
     const __EOF_ACTION: &'static [i8] = &[
@@ -172,7 +172,7 @@ mod __parse__file {
         // State 2
         0,
         // State 3
-        -15,
+        -17,
         // State 4
         0,
         // State 5
@@ -180,9 +180,9 @@ mod __parse__file {
         // State 6
         0,
         // State 7
-        -33,
+        -36,
         // State 8
-        -16,
+        -18,
         // State 9
         0,
         // State 10
@@ -190,29 +190,29 @@ mod __parse__file {
         // State 11
         0,
         // State 12
-        -51,
+        -52,
         // State 13
         0,
         // State 14
         0,
         // State 15
-        -17,
+        -19,
         // State 16
-        -26,
+        -29,
         // State 17
-        -34,
+        -37,
         // State 18
         0,
         // State 19
         0,
         // State 20
-        -12,
+        -14,
         // State 21
-        -52,
+        -53,
         // State 22
         0,
         // State 23
-        -13,
+        -15,
         // State 24
         0,
         // State 25
@@ -222,159 +222,163 @@ mod __parse__file {
         // State 27
         0,
         // State 28
-        -53,
+        -54,
         // State 29
-        -38,
+        -41,
         // State 30
-        -29,
+        -32,
         // State 31
         -10,
         // State 32
         0,
         // State 33
-        -41,
-        // State 34
-        -14,
-        // State 35
-        -9,
-        // State 36
-        0,
-        // State 37
-        -37,
-        // State 38
-        -20,
-        // State 39
-        -21,
-        // State 40
-        -25,
-        // State 41
-        -36,
-        // State 42
-        -30,
-        // State 43
-        -13,
-        // State 44
-        -24,
-        // State 45
-        0,
-        // State 46
-        -42,
-        // State 47
-        -13,
-        // State 48
-        -4,
-        // State 49
         -11,
-        // State 50
+        // State 34
+        -44,
+        // State 35
+        -16,
+        // State 36
+        -9,
+        // State 37
+        0,
+        // State 38
+        -40,
+        // State 39
+        -22,
+        // State 40
+        -23,
+        // State 41
+        -28,
+        // State 42
+        -39,
+        // State 43
+        -33,
+        // State 44
+        -15,
+        // State 45
         -27,
+        // State 46
+        0,
+        // State 47
+        -45,
+        // State 48
+        -15,
+        // State 49
+        -4,
+        // State 50
+        -26,
         // State 51
+        -30,
+        // State 52
         -5,
     ];
     const __GOTO: &'static [i8] = &[
         // State 0
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 4, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0,
         // State 1
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 2
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 3
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 9, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 9, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 4
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 5
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 15, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 15, 0, 0, 0,
         // State 6
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 7
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 8
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 9
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 10
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 11
-        0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 12
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 13
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 14
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0,
         // State 15
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 16
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 17
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 18
-        0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 19
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 0, 27,
+        0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27,
         // State 20
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 21
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 22
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 23
-        0, 0, 0, 0, 0, 0, 30, 0, 31, 0, 32, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 35, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 0, 0, 0, 0, 30, 0, 0, 31, 0, 32, 0, 33, 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 36, 0, 0, 0, 0, 0, 37,
         // State 24
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 25
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 26
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 27
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 28
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 29
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 38, 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 30
-        0, 0, 43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 31
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 32
-        0, 0, 0, 0, 0, 0, 30, 0, 46, 0, 32, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 35, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 0, 0, 0, 0, 30, 0, 0, 47, 0, 32, 0, 33, 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 36, 0, 0, 0, 0, 0, 37,
         // State 33
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 34
-        0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 32, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47, 0, 0, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 35
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 32, 0, 33, 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 0, 0, 37,
         // State 36
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 37
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 38
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 39
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 40
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 41
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 42
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 43
-        0, 0, 0, 0, 0, 0, 30, 0, 49, 0, 32, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 35, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 44
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 30, 0, 0, 50, 0, 32, 0, 33, 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 36, 0, 0, 0, 0, 0, 37,
         // State 45
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 46
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 47
-        0, 0, 0, 0, 0, 0, 30, 0, 52, 0, 32, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 35, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 48
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 30, 0, 0, 53, 0, 32, 0, 33, 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 36, 0, 0, 0, 0, 0, 37,
         // State 49
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 50
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         // State 51
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        // State 52
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ];
     fn __expected_tokens(__state: usize) -> Vec<::std::string::String> {
         const __TERMINAL: &'static [&'static str] = &[
@@ -579,78 +583,78 @@ mod __parse__file {
         let (__pop_states, __symbol, __nonterminal) = match -__action {
             1 => {
                 (|| {
-                    // (pipe_t expr) = pipe_t, expr => ActionFn(35);
+                    // (pipe_t expr) = pipe_t, expr => ActionFn(36);
                     let __sym1 = __pop_Variant3(__symbols);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym1.2.clone();
-                    let __nt = super::__action35::<E>(events, input, __sym0, __sym1);
+                    let __nt = super::__action36::<E>(events, input, __sym0, __sym1);
                     let __symbol = (__start, __Symbol::Variant1(__nt), __end);
                     (2, __symbol, 0)
                 })()
             }
             2 => {
                 (|| {
-                    // (pipe_t expr)* =  => ActionFn(33);
+                    // (pipe_t expr)* =  => ActionFn(34);
                     let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
                     let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action33::<E>(events, input, &__start, &__end);
+                    let __nt = super::__action34::<E>(events, input, &__start, &__end);
                     let __symbol = (__start, __Symbol::Variant2(__nt), __end);
                     (0, __symbol, 1)
                 })()
             }
             3 => {
                 (|| {
-                    // (pipe_t expr)* = (pipe_t expr)+ => ActionFn(34);
+                    // (pipe_t expr)* = (pipe_t expr)+ => ActionFn(35);
                     let __sym0 = __pop_Variant2(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action34::<E>(events, input, __sym0);
+                    let __nt = super::__action35::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant2(__nt), __end);
                     (1, __symbol, 1)
                 })()
             }
             4 => {
                 (|| {
-                    // (pipe_t expr)+ = pipe_t, expr => ActionFn(48);
+                    // (pipe_t expr)+ = pipe_t, expr => ActionFn(49);
                     let __sym1 = __pop_Variant3(__symbols);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym1.2.clone();
-                    let __nt = super::__action48::<E>(events, input, __sym0, __sym1);
+                    let __nt = super::__action49::<E>(events, input, __sym0, __sym1);
                     let __symbol = (__start, __Symbol::Variant2(__nt), __end);
                     (2, __symbol, 2)
                 })()
             }
             5 => {
                 (|| {
-                    // (pipe_t expr)+ = (pipe_t expr)+, pipe_t, expr => ActionFn(49);
+                    // (pipe_t expr)+ = (pipe_t expr)+, pipe_t, expr => ActionFn(50);
                     let __sym2 = __pop_Variant3(__symbols);
                     let __sym1 = __pop_Variant3(__symbols);
                     let __sym0 = __pop_Variant2(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym2.2.clone();
-                    let __nt = super::__action49::<E>(events, input, __sym0, __sym1, __sym2);
+                    let __nt = super::__action50::<E>(events, input, __sym0, __sym1, __sym2);
                     let __symbol = (__start, __Symbol::Variant2(__nt), __end);
                     (3, __symbol, 2)
                 })()
             }
             6 => {
                 (|| {
-                    // @L =  => ActionFn(27);
+                    // @L =  => ActionFn(28);
                     let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
                     let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action27::<E>(events, input, &__start, &__end);
+                    let __nt = super::__action28::<E>(events, input, &__start, &__end);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
                     (0, __symbol, 3)
                 })()
             }
             7 => {
                 (|| {
-                    // @R =  => ActionFn(28);
+                    // @R =  => ActionFn(29);
                     let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
                     let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action28::<E>(events, input, &__start, &__end);
+                    let __nt = super::__action29::<E>(events, input, &__start, &__end);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
                     (0, __symbol, 4)
                 })()
@@ -665,7 +669,7 @@ mod __parse__file {
             }
             9 => {
                 (|| {
-                    // atom = word_t => ActionFn(11);
+                    // _atom = word_t => ActionFn(11);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
@@ -676,7 +680,7 @@ mod __parse__file {
             }
             10 => {
                 (|| {
-                    // atom = ident_t => ActionFn(12);
+                    // _atom = ident_t => ActionFn(12);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
@@ -687,86 +691,95 @@ mod __parse__file {
             }
             11 => {
                 (|| {
-                    // atom = l_paren_t, expr, r_paren_t => ActionFn(13);
-                    let __sym2 = __pop_Variant3(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
+                    // _atom = paren_expr => ActionFn(13);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
-                    let __end = __sym2.2.clone();
-                    let __nt = super::__action13::<E>(events, input, __sym0, __sym1, __sym2);
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action13::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (3, __symbol, 6)
+                    (1, __symbol, 6)
                 })()
             }
             12 => {
                 (|| {
-                    // eq_t = eq => ActionFn(65);
-                    let __sym0 = __pop_Variant0(__symbols);
+                    // _token_re = word_t => ActionFn(4);
+                    let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action65::<E>(events, input, __sym0);
+                    let __nt = super::__action4::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
                     (1, __symbol, 7)
                 })()
             }
             13 => {
                 (|| {
-                    // expr =  => ActionFn(82);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action82::<E>(events, input, &__start, &__end);
+                    // _token_re = regex_t => ActionFn(5);
+                    let __sym0 = __pop_Variant3(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action5::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (0, __symbol, 8)
+                    (1, __symbol, 7)
                 })()
             }
             14 => {
                 (|| {
-                    // expr = symbol+ => ActionFn(83);
-                    let __sym0 = __pop_Variant5(__symbols);
+                    // eq_t = eq => ActionFn(66);
+                    let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action83::<E>(events, input, __sym0);
+                    let __nt = super::__action66::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
                     (1, __symbol, 8)
                 })()
             }
             15 => {
                 (|| {
-                    // file = tokens_def => ActionFn(80);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action80::<E>(events, input, __sym0);
+                    // expr =  => ActionFn(83);
+                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+                    let __nt = super::__action83::<E>(events, input, &__start, &__end);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 9)
+                    (0, __symbol, 9)
                 })()
             }
             16 => {
                 (|| {
-                    // file = tokens_def, rule_def+ => ActionFn(81);
-                    let __sym1 = __pop_Variant5(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
+                    // expr = symbol+ => ActionFn(84);
+                    let __sym0 = __pop_Variant5(__symbols);
                     let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action81::<E>(events, input, __sym0, __sym1);
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action84::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (2, __symbol, 9)
+                    (1, __symbol, 9)
                 })()
             }
             17 => {
                 (|| {
-                    // ident_t = ident => ActionFn(66);
-                    let __sym0 = __pop_Variant0(__symbols);
+                    // file = tokens_def => ActionFn(81);
+                    let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action66::<E>(events, input, __sym0);
+                    let __nt = super::__action81::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
                     (1, __symbol, 10)
                 })()
             }
             18 => {
                 (|| {
-                    // l_curly_t = l_curly => ActionFn(67);
+                    // file = tokens_def, rule_def+ => ActionFn(82);
+                    let __sym1 = __pop_Variant5(__symbols);
+                    let __sym0 = __pop_Variant3(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym1.2.clone();
+                    let __nt = super::__action82::<E>(events, input, __sym0, __sym1);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    (2, __symbol, 10)
+                })()
+            }
+            19 => {
+                (|| {
+                    // ident_t = ident => ActionFn(67);
                     let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
@@ -775,9 +788,9 @@ mod __parse__file {
                     (1, __symbol, 11)
                 })()
             }
-            19 => {
+            20 => {
                 (|| {
-                    // l_paren_t = l_paren => ActionFn(68);
+                    // l_curly_t = l_curly => ActionFn(68);
                     let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
@@ -786,7 +799,18 @@ mod __parse__file {
                     (1, __symbol, 12)
                 })()
             }
-            20 => {
+            21 => {
+                (|| {
+                    // l_paren_t = l_paren => ActionFn(69);
+                    let __sym0 = __pop_Variant0(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action69::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    (1, __symbol, 13)
+                })()
+            }
+            22 => {
                 (|| {
                     // op = qmark_t => ActionFn(9);
                     let __sym0 = __pop_Variant3(__symbols);
@@ -794,10 +818,10 @@ mod __parse__file {
                     let __end = __sym0.2.clone();
                     let __nt = super::__action9::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 13)
+                    (1, __symbol, 14)
                 })()
             }
-            21 => {
+            23 => {
                 (|| {
                     // op = star_t => ActionFn(10);
                     let __sym0 = __pop_Variant3(__symbols);
@@ -805,102 +829,115 @@ mod __parse__file {
                     let __end = __sym0.2.clone();
                     let __nt = super::__action10::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 13)
-                })()
-            }
-            22 => {
-                (|| {
-                    // op? = op => ActionFn(29);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action29::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant4(__nt), __end);
                     (1, __symbol, 14)
-                })()
-            }
-            23 => {
-                (|| {
-                    // op? =  => ActionFn(30);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action30::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant4(__nt), __end);
-                    (0, __symbol, 14)
                 })()
             }
             24 => {
                 (|| {
-                    // pipe_t = pipe => ActionFn(69);
-                    let __sym0 = __pop_Variant0(__symbols);
+                    // op? = op => ActionFn(30);
+                    let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action69::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    let __nt = super::__action30::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant4(__nt), __end);
                     (1, __symbol, 15)
                 })()
             }
             25 => {
                 (|| {
-                    // qmark_t = qmark => ActionFn(70);
+                    // op? =  => ActionFn(31);
+                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+                    let __nt = super::__action31::<E>(events, input, &__start, &__end);
+                    let __symbol = (__start, __Symbol::Variant4(__nt), __end);
+                    (0, __symbol, 15)
+                })()
+            }
+            26 => {
+                (|| {
+                    // paren_expr = l_paren_t, expr, r_paren_t => ActionFn(14);
+                    let __sym2 = __pop_Variant3(__symbols);
+                    let __sym1 = __pop_Variant3(__symbols);
+                    let __sym0 = __pop_Variant3(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym2.2.clone();
+                    let __nt = super::__action14::<E>(events, input, __sym0, __sym1, __sym2);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    (3, __symbol, 16)
+                })()
+            }
+            27 => {
+                (|| {
+                    // pipe_t = pipe => ActionFn(70);
                     let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
                     let __nt = super::__action70::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 16)
+                    (1, __symbol, 17)
                 })()
             }
-            26 => {
+            28 => {
                 (|| {
-                    // r_curly_t = r_curly => ActionFn(71);
+                    // qmark_t = qmark => ActionFn(71);
                     let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
                     let __nt = super::__action71::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 17)
+                    (1, __symbol, 18)
                 })()
             }
-            27 => {
+            29 => {
                 (|| {
-                    // r_paren_t = r_paren => ActionFn(72);
+                    // r_curly_t = r_curly => ActionFn(72);
                     let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
                     let __nt = super::__action72::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 18)
+                    (1, __symbol, 19)
                 })()
             }
-            28 => {
+            30 => {
                 (|| {
-                    // regex_t = regex => ActionFn(73);
+                    // r_paren_t = r_paren => ActionFn(73);
                     let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
                     let __nt = super::__action73::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 19)
+                    (1, __symbol, 20)
                 })()
             }
-            29 => {
+            31 => {
                 (|| {
-                    // rule_def = rule_kw_t, ident_t, eq_t, expr => ActionFn(50);
+                    // regex_t = regex => ActionFn(74);
+                    let __sym0 = __pop_Variant0(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action74::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    (1, __symbol, 21)
+                })()
+            }
+            32 => {
+                (|| {
+                    // rule_def = rule_kw_t, ident_t, eq_t, expr => ActionFn(51);
                     let __sym3 = __pop_Variant3(__symbols);
                     let __sym2 = __pop_Variant3(__symbols);
                     let __sym1 = __pop_Variant3(__symbols);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym3.2.clone();
-                    let __nt = super::__action50::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
+                    let __nt = super::__action51::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (4, __symbol, 20)
+                    (4, __symbol, 22)
                 })()
             }
-            30 => {
+            33 => {
                 (|| {
-                    // rule_def = rule_kw_t, ident_t, eq_t, expr, (pipe_t expr)+ => ActionFn(51);
+                    // rule_def = rule_kw_t, ident_t, eq_t, expr, (pipe_t expr)+ => ActionFn(52);
                     let __sym4 = __pop_Variant2(__symbols);
                     let __sym3 = __pop_Variant3(__symbols);
                     let __sym2 = __pop_Variant3(__symbols);
@@ -908,147 +945,147 @@ mod __parse__file {
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym4.2.clone();
-                    let __nt = super::__action51::<E>(events, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+                    let __nt = super::__action52::<E>(events, input, __sym0, __sym1, __sym2, __sym3, __sym4);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (5, __symbol, 20)
-                })()
-            }
-            31 => {
-                (|| {
-                    // rule_def* =  => ActionFn(38);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action38::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (0, __symbol, 21)
-                })()
-            }
-            32 => {
-                (|| {
-                    // rule_def* = rule_def+ => ActionFn(39);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action39::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 21)
-                })()
-            }
-            33 => {
-                (|| {
-                    // rule_def+ = rule_def => ActionFn(40);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action40::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 22)
+                    (5, __symbol, 22)
                 })()
             }
             34 => {
                 (|| {
-                    // rule_def+ = rule_def+, rule_def => ActionFn(41);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action41::<E>(events, input, __sym0, __sym1);
+                    // rule_def* =  => ActionFn(39);
+                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+                    let __nt = super::__action39::<E>(events, input, &__start, &__end);
                     let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (2, __symbol, 22)
+                    (0, __symbol, 23)
                 })()
             }
             35 => {
                 (|| {
-                    // rule_kw_t = rule_kw => ActionFn(74);
-                    let __sym0 = __pop_Variant0(__symbols);
+                    // rule_def* = rule_def+ => ActionFn(40);
+                    let __sym0 = __pop_Variant5(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action74::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    let __nt = super::__action40::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
                     (1, __symbol, 23)
                 })()
             }
             36 => {
                 (|| {
-                    // star_t = star => ActionFn(75);
-                    let __sym0 = __pop_Variant0(__symbols);
+                    // rule_def+ = rule_def => ActionFn(41);
+                    let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action75::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    let __nt = super::__action41::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
                     (1, __symbol, 24)
                 })()
             }
             37 => {
                 (|| {
-                    // symbol = atom, op => ActionFn(78);
+                    // rule_def+ = rule_def+, rule_def => ActionFn(42);
                     let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
+                    let __sym0 = __pop_Variant5(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym1.2.clone();
-                    let __nt = super::__action78::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (2, __symbol, 25)
+                    let __nt = super::__action42::<E>(events, input, __sym0, __sym1);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+                    (2, __symbol, 24)
                 })()
             }
             38 => {
                 (|| {
-                    // symbol = atom => ActionFn(79);
-                    let __sym0 = __pop_Variant3(__symbols);
+                    // rule_kw_t = rule_kw => ActionFn(75);
+                    let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action79::<E>(events, input, __sym0);
+                    let __nt = super::__action75::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
                     (1, __symbol, 25)
                 })()
             }
             39 => {
                 (|| {
-                    // symbol* =  => ActionFn(31);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action31::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (0, __symbol, 26)
+                    // star_t = star => ActionFn(76);
+                    let __sym0 = __pop_Variant0(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action76::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    (1, __symbol, 26)
                 })()
             }
             40 => {
                 (|| {
-                    // symbol* = symbol+ => ActionFn(32);
-                    let __sym0 = __pop_Variant5(__symbols);
+                    // symbol = _atom, op => ActionFn(79);
+                    let __sym1 = __pop_Variant3(__symbols);
+                    let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action32::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 26)
+                    let __end = __sym1.2.clone();
+                    let __nt = super::__action79::<E>(events, input, __sym0, __sym1);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    (2, __symbol, 27)
                 })()
             }
             41 => {
                 (|| {
-                    // symbol+ = symbol => ActionFn(46);
+                    // symbol = _atom => ActionFn(80);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action46::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+                    let __nt = super::__action80::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
                     (1, __symbol, 27)
                 })()
             }
             42 => {
                 (|| {
-                    // symbol+ = symbol+, symbol => ActionFn(47);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action47::<E>(events, input, __sym0, __sym1);
+                    // symbol* =  => ActionFn(32);
+                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+                    let __nt = super::__action32::<E>(events, input, &__start, &__end);
                     let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (2, __symbol, 27)
+                    (0, __symbol, 28)
                 })()
             }
             43 => {
                 (|| {
-                    // token_def = ident_t, eq_t, token_re => ActionFn(3);
+                    // symbol* = symbol+ => ActionFn(33);
+                    let __sym0 = __pop_Variant5(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action33::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+                    (1, __symbol, 28)
+                })()
+            }
+            44 => {
+                (|| {
+                    // symbol+ = symbol => ActionFn(47);
+                    let __sym0 = __pop_Variant3(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action47::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+                    (1, __symbol, 29)
+                })()
+            }
+            45 => {
+                (|| {
+                    // symbol+ = symbol+, symbol => ActionFn(48);
+                    let __sym1 = __pop_Variant3(__symbols);
+                    let __sym0 = __pop_Variant5(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym1.2.clone();
+                    let __nt = super::__action48::<E>(events, input, __sym0, __sym1);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+                    (2, __symbol, 29)
+                })()
+            }
+            46 => {
+                (|| {
+                    // token_def = ident_t, eq_t, _token_re => ActionFn(3);
                     let __sym2 = __pop_Variant3(__symbols);
                     let __sym1 = __pop_Variant3(__symbols);
                     let __sym0 = __pop_Variant3(__symbols);
@@ -1056,122 +1093,100 @@ mod __parse__file {
                     let __end = __sym2.2.clone();
                     let __nt = super::__action3::<E>(events, input, __sym0, __sym1, __sym2);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (3, __symbol, 28)
-                })()
-            }
-            44 => {
-                (|| {
-                    // token_def* =  => ActionFn(36);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action36::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (0, __symbol, 29)
-                })()
-            }
-            45 => {
-                (|| {
-                    // token_def* = token_def+ => ActionFn(37);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action37::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 29)
-                })()
-            }
-            46 => {
-                (|| {
-                    // token_def+ = token_def => ActionFn(42);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action42::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 30)
+                    (3, __symbol, 30)
                 })()
             }
             47 => {
                 (|| {
-                    // token_def+ = token_def+, token_def => ActionFn(43);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action43::<E>(events, input, __sym0, __sym1);
+                    // token_def* =  => ActionFn(37);
+                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+                    let __nt = super::__action37::<E>(events, input, &__start, &__end);
                     let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (2, __symbol, 30)
+                    (0, __symbol, 31)
                 })()
             }
             48 => {
                 (|| {
-                    // token_kw_t = token_kw => ActionFn(76);
-                    let __sym0 = __pop_Variant0(__symbols);
+                    // token_def* = token_def+ => ActionFn(38);
+                    let __sym0 = __pop_Variant5(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action76::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    let __nt = super::__action38::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
                     (1, __symbol, 31)
                 })()
             }
             49 => {
                 (|| {
-                    // token_re = word_t => ActionFn(4);
+                    // token_def+ = token_def => ActionFn(43);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action4::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    let __nt = super::__action43::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
                     (1, __symbol, 32)
                 })()
             }
             50 => {
                 (|| {
-                    // token_re = regex_t => ActionFn(5);
-                    let __sym0 = __pop_Variant3(__symbols);
+                    // token_def+ = token_def+, token_def => ActionFn(44);
+                    let __sym1 = __pop_Variant3(__symbols);
+                    let __sym0 = __pop_Variant5(__symbols);
                     let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action5::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 32)
+                    let __end = __sym1.2.clone();
+                    let __nt = super::__action44::<E>(events, input, __sym0, __sym1);
+                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+                    (2, __symbol, 32)
                 })()
             }
             51 => {
                 (|| {
-                    // tokens_def = token_kw_t, l_curly_t, r_curly_t => ActionFn(84);
+                    // token_kw_t = token_kw => ActionFn(77);
+                    let __sym0 = __pop_Variant0(__symbols);
+                    let __start = __sym0.0.clone();
+                    let __end = __sym0.2.clone();
+                    let __nt = super::__action77::<E>(events, input, __sym0);
+                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+                    (1, __symbol, 33)
+                })()
+            }
+            52 => {
+                (|| {
+                    // tokens_def = token_kw_t, l_curly_t, r_curly_t => ActionFn(85);
                     let __sym2 = __pop_Variant3(__symbols);
                     let __sym1 = __pop_Variant3(__symbols);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym2.2.clone();
-                    let __nt = super::__action84::<E>(events, input, __sym0, __sym1, __sym2);
+                    let __nt = super::__action85::<E>(events, input, __sym0, __sym1, __sym2);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (3, __symbol, 33)
+                    (3, __symbol, 34)
                 })()
             }
-            52 => {
+            53 => {
                 (|| {
-                    // tokens_def = token_kw_t, l_curly_t, token_def+, r_curly_t => ActionFn(85);
+                    // tokens_def = token_kw_t, l_curly_t, token_def+, r_curly_t => ActionFn(86);
                     let __sym3 = __pop_Variant3(__symbols);
                     let __sym2 = __pop_Variant5(__symbols);
                     let __sym1 = __pop_Variant3(__symbols);
                     let __sym0 = __pop_Variant3(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym3.2.clone();
-                    let __nt = super::__action85::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
+                    let __nt = super::__action86::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (4, __symbol, 33)
+                    (4, __symbol, 34)
                 })()
             }
-            53 => {
+            54 => {
                 (|| {
-                    // word_t = word => ActionFn(77);
+                    // word_t = word => ActionFn(78);
                     let __sym0 = __pop_Variant0(__symbols);
                     let __start = __sym0.0.clone();
                     let __end = __sym0.2.clone();
-                    let __nt = super::__action77::<E>(events, input, __sym0);
+                    let __nt = super::__action78::<E>(events, input, __sym0);
                     let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 34)
+                    (1, __symbol, 35)
                 })()
             }
             _ => panic!("invalid action code {}", __action)
@@ -1180,7 +1195,7 @@ mod __parse__file {
         __states.truncate(__states_len - __pop_states);
         __symbols.push(__symbol);
         let __state = *__states.last().unwrap() as usize;
-        let __next_state = __GOTO[__state * 35 + __nonterminal] - 1;
+        let __next_state = __GOTO[__state * 36 + __nonterminal] - 1;
         __states.push(__next_state);
         None
     }
@@ -1441,7 +1456,7 @@ fn __action4<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    events.reduce(symbols::token_re, s!(__0)); 1
+    s!(__0)
 }
 
 #[allow(unused_variables)]
@@ -1455,7 +1470,7 @@ fn __action5<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    events.reduce(symbols::token_re, s!(__0)); 1
+    s!(__0)
 }
 
 #[allow(unused_variables)]
@@ -1544,7 +1559,7 @@ fn __action11<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    events.reduce(symbols::atom, s!(__0)); 1
+    s!(__0)
 }
 
 #[allow(unused_variables)]
@@ -1558,11 +1573,25 @@ fn __action12<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    events.reduce(symbols::atom, s!(__0)); 1
+    s!(__0)
 }
 
 #[allow(unused_variables)]
 fn __action13<
+    'input,
+    E,
+>(
+    events: &mut E,
+    input: &'input str,
+    (_, __0, _): (usize, usize, usize),
+) -> usize where
+  E:  __lalrpop_util::LrEvents,
+{
+    s!(__0)
+}
+
+#[allow(unused_variables)]
+fn __action14<
     'input,
     E,
 >(
@@ -1574,23 +1603,7 @@ fn __action13<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    events.reduce(symbols::atom, s!(__0, __1, __2)); 1
-}
-
-#[allow(unused_variables)]
-fn __action14<
-    'input,
-    E,
->(
-    events: &mut E,
-    input: &'input str,
-    (_, __0, _): (usize, usize, usize),
-    (_, __1, _): (usize, &'input str, usize),
-    (_, __2, _): (usize, usize, usize),
-) -> usize where
-  E:  __lalrpop_util::LrEvents,
-{
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::token_kw_t, l, r); 1
+    events.reduce(symbols::paren_expr, s!(__0, __1, __2)); 1
 }
 
 #[allow(unused_variables)]
@@ -1606,7 +1619,7 @@ fn __action15<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::rule_kw_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::token_kw_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1622,7 +1635,7 @@ fn __action16<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::l_curly_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::rule_kw_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1638,7 +1651,7 @@ fn __action17<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::r_curly_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::l_curly_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1654,7 +1667,7 @@ fn __action18<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::l_paren_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::r_curly_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1670,7 +1683,7 @@ fn __action19<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::r_paren_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::l_paren_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1686,7 +1699,7 @@ fn __action20<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::eq_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::r_paren_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1702,7 +1715,7 @@ fn __action21<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::pipe_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::eq_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1718,7 +1731,7 @@ fn __action22<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::star_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::pipe_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1734,7 +1747,7 @@ fn __action23<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::qmark_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::star_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1750,7 +1763,7 @@ fn __action24<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::ident_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::qmark_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1766,7 +1779,7 @@ fn __action25<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::word_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::ident_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1782,7 +1795,7 @@ fn __action26<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let (l, _, r) = (__0, __1, __2); events.shift(symbols::regex_t, l, r); 1
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::word_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1792,12 +1805,13 @@ fn __action27<
 >(
     events: &mut E,
     input: &'input str,
-    __lookbehind: &usize,
-    __lookahead: &usize,
+    (_, __0, _): (usize, usize, usize),
+    (_, __1, _): (usize, &'input str, usize),
+    (_, __2, _): (usize, usize, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    __lookahead.clone()
+    let (l, _, r) = (__0, __1, __2); events.shift(symbols::regex_t, l, r); 1
 }
 
 #[allow(unused_variables)]
@@ -1812,11 +1826,26 @@ fn __action28<
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    __lookbehind.clone()
+    __lookahead.clone()
 }
 
 #[allow(unused_variables)]
 fn __action29<
+    'input,
+    E,
+>(
+    events: &mut E,
+    input: &'input str,
+    __lookbehind: &usize,
+    __lookahead: &usize,
+) -> usize where
+  E:  __lalrpop_util::LrEvents,
+{
+    __lookbehind.clone()
+}
+
+#[allow(unused_variables)]
+fn __action30<
     'input,
     E,
 >(
@@ -1830,7 +1859,7 @@ fn __action29<
 }
 
 #[allow(unused_variables)]
-fn __action30<
+fn __action31<
     'input,
     E,
 >(
@@ -1845,7 +1874,7 @@ fn __action30<
 }
 
 #[allow(unused_variables)]
-fn __action31<
+fn __action32<
     'input,
     E,
 >(
@@ -1860,7 +1889,7 @@ fn __action31<
 }
 
 #[allow(unused_variables)]
-fn __action32<
+fn __action33<
     'input,
     E,
 >(
@@ -1874,7 +1903,7 @@ fn __action32<
 }
 
 #[allow(unused_variables)]
-fn __action33<
+fn __action34<
     'input,
     E,
 >(
@@ -1889,7 +1918,7 @@ fn __action33<
 }
 
 #[allow(unused_variables)]
-fn __action34<
+fn __action35<
     'input,
     E,
 >(
@@ -1903,7 +1932,7 @@ fn __action34<
 }
 
 #[allow(unused_variables)]
-fn __action35<
+fn __action36<
     'input,
     E,
 >(
@@ -1918,7 +1947,7 @@ fn __action35<
 }
 
 #[allow(unused_variables)]
-fn __action36<
+fn __action37<
     'input,
     E,
 >(
@@ -1930,20 +1959,6 @@ fn __action36<
   E:  __lalrpop_util::LrEvents,
 {
     vec![]
-}
-
-#[allow(unused_variables)]
-fn __action37<
-    'input,
-    E,
->(
-    events: &mut E,
-    input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<usize>, usize),
-) -> ::std::vec::Vec<usize> where
-  E:  __lalrpop_util::LrEvents,
-{
-    v
 }
 
 #[allow(unused_variables)]
@@ -1953,6 +1968,20 @@ fn __action38<
 >(
     events: &mut E,
     input: &'input str,
+    (_, v, _): (usize, ::std::vec::Vec<usize>, usize),
+) -> ::std::vec::Vec<usize> where
+  E:  __lalrpop_util::LrEvents,
+{
+    v
+}
+
+#[allow(unused_variables)]
+fn __action39<
+    'input,
+    E,
+>(
+    events: &mut E,
+    input: &'input str,
     __lookbehind: &usize,
     __lookahead: &usize,
 ) -> ::std::vec::Vec<usize> where
@@ -1962,7 +1991,7 @@ fn __action38<
 }
 
 #[allow(unused_variables)]
-fn __action39<
+fn __action40<
     'input,
     E,
 >(
@@ -1976,7 +2005,7 @@ fn __action39<
 }
 
 #[allow(unused_variables)]
-fn __action40<
+fn __action41<
     'input,
     E,
 >(
@@ -1987,21 +2016,6 @@ fn __action40<
   E:  __lalrpop_util::LrEvents,
 {
     vec![__0]
-}
-
-#[allow(unused_variables)]
-fn __action41<
-    'input,
-    E,
->(
-    events: &mut E,
-    input: &'input str,
-    (_, v, _): (usize, ::std::vec::Vec<usize>, usize),
-    (_, e, _): (usize, usize, usize),
-) -> ::std::vec::Vec<usize> where
-  E:  __lalrpop_util::LrEvents,
-{
-    { let mut v = v; v.push(e); v }
 }
 
 #[allow(unused_variables)]
@@ -2011,6 +2025,21 @@ fn __action42<
 >(
     events: &mut E,
     input: &'input str,
+    (_, v, _): (usize, ::std::vec::Vec<usize>, usize),
+    (_, e, _): (usize, usize, usize),
+) -> ::std::vec::Vec<usize> where
+  E:  __lalrpop_util::LrEvents,
+{
+    { let mut v = v; v.push(e); v }
+}
+
+#[allow(unused_variables)]
+fn __action43<
+    'input,
+    E,
+>(
+    events: &mut E,
+    input: &'input str,
     (_, __0, _): (usize, usize, usize),
 ) -> ::std::vec::Vec<usize> where
   E:  __lalrpop_util::LrEvents,
@@ -2019,7 +2048,7 @@ fn __action42<
 }
 
 #[allow(unused_variables)]
-fn __action43<
+fn __action44<
     'input,
     E,
 >(
@@ -2034,7 +2063,7 @@ fn __action43<
 }
 
 #[allow(unused_variables)]
-fn __action44<
+fn __action45<
     'input,
     E,
 >(
@@ -2048,7 +2077,7 @@ fn __action44<
 }
 
 #[allow(unused_variables)]
-fn __action45<
+fn __action46<
     'input,
     E,
 >(
@@ -2063,7 +2092,7 @@ fn __action45<
 }
 
 #[allow(unused_variables)]
-fn __action46<
+fn __action47<
     'input,
     E,
 >(
@@ -2077,7 +2106,7 @@ fn __action46<
 }
 
 #[allow(unused_variables)]
-fn __action47<
+fn __action48<
     'input,
     E,
 >(
@@ -2092,7 +2121,7 @@ fn __action47<
 }
 
 #[allow(unused_variables)]
-fn __action48<
+fn __action49<
     'input,
     E,
 >(
@@ -2105,14 +2134,14 @@ fn __action48<
 {
     let __start0 = __0.0.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action35(
+    let __temp0 = __action36(
         events,
         input,
         __0,
         __1,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action44(
+    __action45(
         events,
         input,
         __temp0,
@@ -2120,7 +2149,7 @@ fn __action48<
 }
 
 #[allow(unused_variables)]
-fn __action49<
+fn __action50<
     'input,
     E,
 >(
@@ -2134,51 +2163,17 @@ fn __action49<
 {
     let __start0 = __1.0.clone();
     let __end0 = __2.2.clone();
-    let __temp0 = __action35(
+    let __temp0 = __action36(
         events,
         input,
         __1,
         __2,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action45(
+    __action46(
         events,
         input,
         __0,
-        __temp0,
-    )
-}
-
-#[allow(unused_variables)]
-fn __action50<
-    'input,
-    E,
->(
-    events: &mut E,
-    input: &'input str,
-    __0: (usize, usize, usize),
-    __1: (usize, usize, usize),
-    __2: (usize, usize, usize),
-    __3: (usize, usize, usize),
-) -> usize where
-  E:  __lalrpop_util::LrEvents,
-{
-    let __start0 = __3.2.clone();
-    let __end0 = __3.2.clone();
-    let __temp0 = __action33(
-        events,
-        input,
-        &__start0,
-        &__end0,
-    );
-    let __temp0 = (__start0, __temp0, __end0);
-    __action6(
-        events,
-        input,
-        __0,
-        __1,
-        __2,
-        __3,
         __temp0,
     )
 }
@@ -2194,16 +2189,16 @@ fn __action51<
     __1: (usize, usize, usize),
     __2: (usize, usize, usize),
     __3: (usize, usize, usize),
-    __4: (usize, ::std::vec::Vec<(usize, usize)>, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __4.0.clone();
-    let __end0 = __4.2.clone();
+    let __start0 = __3.2.clone();
+    let __end0 = __3.2.clone();
     let __temp0 = __action34(
         events,
         input,
-        __4,
+        &__start0,
+        &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
     __action6(
@@ -2225,24 +2220,28 @@ fn __action52<
     events: &mut E,
     input: &'input str,
     __0: (usize, usize, usize),
-    __1: (usize, &'input str, usize),
+    __1: (usize, usize, usize),
+    __2: (usize, usize, usize),
+    __3: (usize, usize, usize),
+    __4: (usize, ::std::vec::Vec<(usize, usize)>, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __1.2.clone();
-    let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __start0 = __4.0.clone();
+    let __end0 = __4.2.clone();
+    let __temp0 = __action35(
         events,
         input,
-        &__start0,
-        &__end0,
+        __4,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action20(
+    __action6(
         events,
         input,
         __0,
         __1,
+        __2,
+        __3,
         __temp0,
     )
 }
@@ -2261,14 +2260,14 @@ fn __action53<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action24(
+    __action21(
         events,
         input,
         __0,
@@ -2291,14 +2290,14 @@ fn __action54<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action16(
+    __action25(
         events,
         input,
         __0,
@@ -2321,14 +2320,14 @@ fn __action55<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action18(
+    __action17(
         events,
         input,
         __0,
@@ -2351,14 +2350,14 @@ fn __action56<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action21(
+    __action19(
         events,
         input,
         __0,
@@ -2381,14 +2380,14 @@ fn __action57<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action23(
+    __action22(
         events,
         input,
         __0,
@@ -2411,14 +2410,14 @@ fn __action58<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action17(
+    __action24(
         events,
         input,
         __0,
@@ -2441,14 +2440,14 @@ fn __action59<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action19(
+    __action18(
         events,
         input,
         __0,
@@ -2471,14 +2470,14 @@ fn __action60<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action26(
+    __action20(
         events,
         input,
         __0,
@@ -2501,14 +2500,14 @@ fn __action61<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action15(
+    __action27(
         events,
         input,
         __0,
@@ -2531,14 +2530,14 @@ fn __action62<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action22(
+    __action16(
         events,
         input,
         __0,
@@ -2561,14 +2560,14 @@ fn __action63<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action14(
+    __action23(
         events,
         input,
         __0,
@@ -2591,14 +2590,14 @@ fn __action64<
 {
     let __start0 = __1.2.clone();
     let __end0 = __1.2.clone();
-    let __temp0 = __action27(
+    let __temp0 = __action28(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action25(
+    __action15(
         events,
         input,
         __0,
@@ -2614,12 +2613,13 @@ fn __action65<
 >(
     events: &mut E,
     input: &'input str,
-    __0: (usize, &'input str, usize),
+    __0: (usize, usize, usize),
+    __1: (usize, &'input str, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __0.0.clone();
-    let __end0 = __0.0.clone();
+    let __start0 = __1.2.clone();
+    let __end0 = __1.2.clone();
     let __temp0 = __action28(
         events,
         input,
@@ -2627,11 +2627,12 @@ fn __action65<
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action52(
+    __action26(
         events,
         input,
-        __temp0,
         __0,
+        __1,
+        __temp0,
     )
 }
 
@@ -2648,7 +2649,7 @@ fn __action66<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2676,7 +2677,7 @@ fn __action67<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2704,7 +2705,7 @@ fn __action68<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2732,7 +2733,7 @@ fn __action69<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2760,7 +2761,7 @@ fn __action70<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2788,7 +2789,7 @@ fn __action71<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2816,7 +2817,7 @@ fn __action72<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2844,7 +2845,7 @@ fn __action73<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2872,7 +2873,7 @@ fn __action74<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2900,7 +2901,7 @@ fn __action75<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2928,7 +2929,7 @@ fn __action76<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2956,7 +2957,7 @@ fn __action77<
 {
     let __start0 = __0.0.clone();
     let __end0 = __0.0.clone();
-    let __temp0 = __action28(
+    let __temp0 = __action29(
         events,
         input,
         &__start0,
@@ -2978,24 +2979,24 @@ fn __action78<
 >(
     events: &mut E,
     input: &'input str,
-    __0: (usize, usize, usize),
-    __1: (usize, usize, usize),
+    __0: (usize, &'input str, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __1.0.clone();
-    let __end0 = __1.2.clone();
+    let __start0 = __0.0.clone();
+    let __end0 = __0.0.clone();
     let __temp0 = __action29(
         events,
         input,
-        __1,
+        &__start0,
+        &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action8(
+    __action65(
         events,
         input,
-        __0,
         __temp0,
+        __0,
     )
 }
 
@@ -3007,16 +3008,16 @@ fn __action79<
     events: &mut E,
     input: &'input str,
     __0: (usize, usize, usize),
+    __1: (usize, usize, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __0.2.clone();
-    let __end0 = __0.2.clone();
+    let __start0 = __1.0.clone();
+    let __end0 = __1.2.clone();
     let __temp0 = __action30(
         events,
         input,
-        &__start0,
-        &__end0,
+        __1,
     );
     let __temp0 = (__start0, __temp0, __end0);
     __action8(
@@ -3040,14 +3041,14 @@ fn __action80<
 {
     let __start0 = __0.2.clone();
     let __end0 = __0.2.clone();
-    let __temp0 = __action38(
+    let __temp0 = __action31(
         events,
         input,
         &__start0,
         &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action1(
+    __action8(
         events,
         input,
         __0,
@@ -3063,16 +3064,16 @@ fn __action81<
     events: &mut E,
     input: &'input str,
     __0: (usize, usize, usize),
-    __1: (usize, ::std::vec::Vec<usize>, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __1.0.clone();
-    let __end0 = __1.2.clone();
+    let __start0 = __0.2.clone();
+    let __end0 = __0.2.clone();
     let __temp0 = __action39(
         events,
         input,
-        __1,
+        &__start0,
+        &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
     __action1(
@@ -3090,23 +3091,23 @@ fn __action82<
 >(
     events: &mut E,
     input: &'input str,
-    __lookbehind: &usize,
-    __lookahead: &usize,
+    __0: (usize, usize, usize),
+    __1: (usize, ::std::vec::Vec<usize>, usize),
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __lookbehind.clone();
-    let __end0 = __lookahead.clone();
-    let __temp0 = __action31(
+    let __start0 = __1.0.clone();
+    let __end0 = __1.2.clone();
+    let __temp0 = __action40(
         events,
         input,
-        &__start0,
-        &__end0,
+        __1,
     );
     let __temp0 = (__start0, __temp0, __end0);
-    __action7(
+    __action1(
         events,
         input,
+        __0,
         __temp0,
     )
 }
@@ -3118,16 +3119,18 @@ fn __action83<
 >(
     events: &mut E,
     input: &'input str,
-    __0: (usize, ::std::vec::Vec<usize>, usize),
+    __lookbehind: &usize,
+    __lookahead: &usize,
 ) -> usize where
   E:  __lalrpop_util::LrEvents,
 {
-    let __start0 = __0.0.clone();
-    let __end0 = __0.2.clone();
+    let __start0 = __lookbehind.clone();
+    let __end0 = __lookahead.clone();
     let __temp0 = __action32(
         events,
         input,
-        __0,
+        &__start0,
+        &__end0,
     );
     let __temp0 = (__start0, __temp0, __end0);
     __action7(
@@ -3144,6 +3147,32 @@ fn __action84<
 >(
     events: &mut E,
     input: &'input str,
+    __0: (usize, ::std::vec::Vec<usize>, usize),
+) -> usize where
+  E:  __lalrpop_util::LrEvents,
+{
+    let __start0 = __0.0.clone();
+    let __end0 = __0.2.clone();
+    let __temp0 = __action33(
+        events,
+        input,
+        __0,
+    );
+    let __temp0 = (__start0, __temp0, __end0);
+    __action7(
+        events,
+        input,
+        __temp0,
+    )
+}
+
+#[allow(unused_variables)]
+fn __action85<
+    'input,
+    E,
+>(
+    events: &mut E,
+    input: &'input str,
     __0: (usize, usize, usize),
     __1: (usize, usize, usize),
     __2: (usize, usize, usize),
@@ -3152,7 +3181,7 @@ fn __action84<
 {
     let __start0 = __1.2.clone();
     let __end0 = __2.0.clone();
-    let __temp0 = __action36(
+    let __temp0 = __action37(
         events,
         input,
         &__start0,
@@ -3170,7 +3199,7 @@ fn __action84<
 }
 
 #[allow(unused_variables)]
-fn __action85<
+fn __action86<
     'input,
     E,
 >(
@@ -3185,7 +3214,7 @@ fn __action85<
 {
     let __start0 = __2.0.clone();
     let __end0 = __2.2.clone();
-    let __temp0 = __action37(
+    let __temp0 = __action38(
         events,
         input,
         __2,

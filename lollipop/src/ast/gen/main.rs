@@ -27,6 +27,7 @@ fn gen_ast() {
         "TokenDef",
         "RuleDef",
         "Expr",
+        "ParenExpr",
         "Symbol",
         "Op",
         "Word",
@@ -35,7 +36,7 @@ fn gen_ast() {
     ];
     let enums: &[(&str, &[&str])] = &[
         ("TokenRe", &["Word", "Regex"]),
-        ("Atom", &["Word", "Ident", "Expr",]),
+        ("Atom", &["Word", "Ident", "ParenExpr",]),
     ];
 
     for &symbol in wrappers.iter() {

@@ -63,7 +63,7 @@ fn lower_alt(nt: &mut Alternative, name: Option<&NonterminalString>, lm: &Lowere
     let action = if let Some(name) = name {
         format!("events.reduce(symbols::{}, s!(<>)); 1", name)
     } else {
-        "0".to_string()
+        "s!(<>)".to_string()
     };
     nt.action = Some(ActionKind::User(action));
 }

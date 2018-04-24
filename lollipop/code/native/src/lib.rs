@@ -92,12 +92,19 @@ pub fn extend_selection(call: Call) -> JsResult<JsValue> {
     ret(scope, result)
 }
 
+pub fn diagnostics(call: Call) -> JsResult<JsValue> {
+    let scope = call.scope;
+    let mut handle = call.arguments.require(scope, 0)?.check::<JsFileHandle>()?;
+    let result = handle.grab(|file| file.diagnostics());
+    ret(scope, result)
+}
 
 register_module!(m, {
     m.export("parse", parse)?;
     m.export("syntaxTree", syntax_tree)?;
     m.export("highlight", highlight)?;
     m.export("extendSelection", extend_selection)?;
+    m.export("diagnostics", diagnostics)?;
     Ok(())
 });
 

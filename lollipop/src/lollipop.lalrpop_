@@ -8,9 +8,9 @@ tokens_def =
   token_kw l_curly token_def* r_curly;
 
 token_def =
-  ident eq token_re;
+  ident eq _token_re;
 
-token_re = { word, regex };
+_token_re = { word, regex };
 
 rule_def =
   rule_kw ident eq expr (pipe expr)*;
@@ -19,11 +19,13 @@ expr =
   symbol*;
 
 symbol =
-  atom op?;
+  _atom op?;
 
 op =  { qmark, star };
 
-atom = { word, ident, l_paren expr r_paren };
+_atom = { word, ident, paren_expr };
+
+paren_expr = l_paren expr r_paren;
 
 match {
   "tokens" => token_kw,
