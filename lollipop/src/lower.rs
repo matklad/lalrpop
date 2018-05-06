@@ -104,7 +104,7 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
     let g = r::Grammar {
         prefix: String::new(),
         algorithm: r::Algorithm {
-            lalr: true,
+            lalr: false,
             codegen: r::LrCodeGeneration::RecursiveAscent,
         },
         uses_error_recovery: false,

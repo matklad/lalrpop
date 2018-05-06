@@ -1,7 +1,15 @@
+use std::{
+    rc::Rc,
+    path::PathBuf,
+};
 use lalrpop::{
     build,
     rust::RustWrite,
     grammar::repr as r,
+    lr1,
+    tls::Tls,
+    session::Session,
+    file_text::FileText,
 };
 use ::{
     parse,
@@ -12,6 +20,12 @@ use ::{
 type Result<T> = ::std::result::Result<T, ::failure::Error>;
 
 pub fn gen(input: String) -> Result<String> {
+    let sess = Session::new();
+    let file_text = FileText::new(
+        PathBuf::from(".lolipop"),
+        input.clone(),
+    );
+    let _tls = Tls::install(Rc::new(sess), Rc::new(file_text)); // :((((
     let file = parse(input);
     let file = ast::File::cast(file.root()).unwrap();
     let (grammar, diags) = lower(file);
@@ -66,13 +80,9 @@ fn emit_recursive_ascent(
         // where to stop!
         assert_eq!(grammar.productions_for(start_nt).len(), 1);
 
-//        let _lr1_tls = lr1::Lr1Tls::install(grammar.terminals.clone());
-//
-//        let lr1result = lr1::build_states(&grammar, start_nt.clone());
-//        if session.emit_report {
-//            let mut output_report_file = try!(fs::File::create(&report_file));
-//            try!(lr1::generate_report(&mut output_report_file, &lr1result));
-//        }
+        let _lr1_tls = lr1::Lr1Tls::install(grammar.terminals.clone());
+
+        let lr1result = lr1::build_states(&grammar, start_nt.clone());
 //
 //        let states = match lr1result {
 //            Ok(states) => states,
