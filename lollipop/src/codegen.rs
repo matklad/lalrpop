@@ -83,42 +83,22 @@ fn emit_recursive_ascent(
         let _lr1_tls = lr1::Lr1Tls::install(grammar.terminals.clone());
 
         let lr1result = lr1::build_states(&grammar, start_nt.clone());
-//
-//        let states = match lr1result {
-//            Ok(states) => states,
-//            Err(error) => {
-//                let messages = lr1::report_error(&grammar, &error);
-//                let _ = report_messages(messages);
-//                exit(1) // FIXME -- propagate up instead of calling `exit`
-//            }
-//        };
-//
-//        match grammar.algorithm.codegen {
-//            r::LrCodeGeneration::RecursiveAscent => try!(lr1::codegen::ascent::compile(
-//                &grammar,
-//                user_nt.clone(),
-//                start_nt.clone(),
-//                &states,
-//                "super",
-//                &mut rust,
-//            )),
-//            r::LrCodeGeneration::TableDriven => try!(lr1::codegen::parse_table::compile(
-//                &grammar,
-//                user_nt.clone(),
-//                start_nt.clone(),
-//                &states,
-//                "super",
-//                &mut rust,
-//            )),
-//
-//            r::LrCodeGeneration::TestAll => try!(lr1::codegen::test_all::compile(
-//                &grammar,
-//                user_nt.clone(),
-//                start_nt.clone(),
-//                &states,
-//                &mut rust,
-//            )),
-//        }
+
+        let states = match lr1result {
+            Ok(states) => states,
+            Err(error) => {
+                bail!("{:?}", error)
+            }
+        };
+
+//        lr1::codegen::ascent::compile(
+//            &grammar,
+//            user_nt.clone(),
+//            start_nt.clone(),
+//            &states,
+//            "super",
+//            &mut rust,
+//        )?;
 //
 //        rust!(
 //            rust,
