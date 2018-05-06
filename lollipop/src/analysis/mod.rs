@@ -34,6 +34,22 @@ impl Analysis {
         self.sink.file_error("no start symbol");
         None
     }
+
+    pub fn symbols<'p>(&mut self, file: ast::File<'p>) -> Vec<&'p str> {
+        let mut ret = Vec::new();
+        for t in file.tokens_def().tokens() {
+            ret.push(t.name().as_str());
+        }
+
+        for r in file.rules() {
+            let r = r.name().as_str();
+            if !r.starts_with("_") {
+                ret.push(r)
+            }
+        }
+
+        ret
+    }
 }
 
 

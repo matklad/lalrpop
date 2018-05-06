@@ -25,7 +25,7 @@ pub fn gen(input: String) -> Result<String> {
         }
     };
     println!("lowered!");
-    Ok(String::new())
+    emit_recursive_ascent(&grammar)
 }
 
 fn emit_recursive_ascent(
@@ -57,16 +57,13 @@ fn emit_recursive_ascent(
     if let Some(ref symbols) = grammar.symbols {
         build::emit_symbols(symbols, &mut rust)?;
     }
-//
-//    if grammar.start_nonterminals.is_empty() {
-//        println!("Error: no public symbols declared in grammar");
-//        exit(1);
-//    }
-//
-//    for (user_nt, start_nt) in &grammar.start_nonterminals {
-//        // We generate these, so there should always be exactly 1
-//        // production. Otherwise the LR(1) algorithm doesn't know
-//        // where to stop!
+    if grammar.start_nonterminals.is_empty() {
+        bail!("Error: no public symbols declared in grammar");
+    }
+    for (user_nt, start_nt) in &grammar.start_nonterminals {
+        // We generate these, so there should always be exactly 1
+        // production. Otherwise the LR(1) algorithm doesn't know
+        // where to stop!
 //        assert_eq!(grammar.productions_for(start_nt).len(), 1);
 //
 //        log!(
@@ -128,7 +125,7 @@ fn emit_recursive_ascent(
 //            start_nt,
 //            user_nt
 //        );
-//    }
+    }
 //
 //    if let Some(ref intern_token) = grammar.intern_token {
 //        try!(intern_token::compile(&grammar, intern_token, &mut rust));

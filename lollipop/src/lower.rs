@@ -61,6 +61,8 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
         }]
     };
 
+    let symbols = Some(a.symbols(file).into_iter().map(|s| s.to_owned()).collect());
+
     let intern_token = a.lexer_dfa(file);
 
     let g = r::Grammar {
@@ -81,7 +83,7 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
             all: Vec::new(),
             bits: Map::new(),
         },
-        symbols: None,
+        symbols,
         nonterminals: Map::new(),
         token_span: Span(0, 0),
         conversions: Map::new(),
@@ -101,86 +103,3 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
     };
     Some(g)
 }
-
-
-//fn construct(grammar: &mut Grammar, match_block: MatchBlock) -> NormResult<()> {
-//
-//    let dfa = match dfa::build_dfa(&regexs, &precedences) {
-//        Ok(dfa) => dfa,
-//        Err(DFAConstructionError::NFAConstructionError { index, error }) => {
-//            let feature = match error {
-//                NamedCaptures => r#"named captures (`(?P<foo>...)`)"#,
-//                NonGreedy => r#""non-greedy" repetitions (`*?` or `+?`)"#,
-//                WordBoundary => r#"word boundaries (`\b` or `\B`)"#,
-//                LineBoundary => r#"line boundaries (`^` or `$`)"#,
-//                TextBoundary => r#"text boundaries (`^` or `$`)"#,
-//                ByteRegex => r#"byte-based matches"#,
-//            };
-//            let literal = &match_entries[index.index()].match_literal;
-//            return_err!(
-//                spans[literal],
-//                "{} are not supported in regular expressions",
-//                feature
-//            )
-//        }
-//        Err(DFAConstructionError::Ambiguity { match0, match1 }) => {
-//            let literal0 = &match_entries[match0.index()].match_literal;
-//            let literal1 = &match_entries[match1.index()].match_literal;
-//            // FIXME(#88) -- it'd be nice to give an example here
-//            return_err!(
-//                spans[literal0],
-//                "ambiguity detected between the terminal `{}` and the terminal `{}`",
-//                literal0,
-//                literal1
-//            )
-//        }
-//    };
-//
-//    grammar.items.push(GrammarItem::InternToken(InternToken {
-//        match_entries: match_entries,
-//        dfa: dfa,
-//    }));
-//
-//    // we need to inject a `'input` lifetime and `input: &'input str` parameter as well:
-//
-//    let input_lifetime = Atom::from(INPUT_LIFETIME);
-//    for parameter in &grammar.type_parameters {
-//        match *parameter {
-//            TypeParameter::Lifetime(ref i) if *i == input_lifetime => {
-//                return_err!(
-//                    grammar.span,
-//                    "since there is no external token enum specified, \
-//                     the `'input` lifetime is implicit and cannot be declared"
-//                );
-//            }
-//            _ => {}
-//        }
-//    }
-//
-//    let input_parameter = Atom::from(INPUT_PARAMETER);
-//    for parameter in &grammar.parameters {
-//        if parameter.name == input_parameter {
-//            return_err!(
-//                grammar.span,
-//                "since there is no external token enum specified, \
-//                 the `input` parameter is implicit and cannot be declared"
-//            );
-//        }
-//    }
-//
-//    grammar
-//        .type_parameters
-//        .insert(0, TypeParameter::Lifetime(input_lifetime.clone()));
-//
-//    let parameter = Parameter {
-//        name: input_parameter,
-//        ty: TypeRef::Ref {
-//            lifetime: Some(input_lifetime),
-//            mutable: false,
-//            referent: Box::new(TypeRef::Id(Atom::from("str"))),
-//        },
-//    };
-//    grammar.parameters.push(parameter);
-//
-//    Ok(())
-//}
