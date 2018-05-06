@@ -1,16 +1,19 @@
 use string_cache::DefaultAtom as Atom;
-use lalrpop::grammar::parse_tree::Span;
-use lalrpop::grammar::repr as r;
-use lalrpop::grammar::parse_tree as pt;
-use lalrpop::collections::Map;
-
-use super::ast;
-use analysis::{
-    Analysis,
-    lexer::MatchBlock,
+use lalrpop::{
+    collections::Map,
+    grammar::{
+        repr as r,
+        parse_tree::{self as pt, Span, TerminalLiteral},
+    },
 };
-use lalrpop::grammar::parse_tree::TerminalLiteral;
-use ide::Diagnostic;
+use ::{
+    ast::{self, AstNode},
+    analysis::{
+        Analysis,
+        lexer::MatchBlock,
+    },
+    ide::Diagnostic
+};
 
 pub fn lower(file: ast::File) -> (Option<r::Grammar>, Vec<Diagnostic>) {
     let mut a = Analysis::new();
@@ -18,10 +21,23 @@ pub fn lower(file: ast::File) -> (Option<r::Grammar>, Vec<Diagnostic>) {
     (g, a.diagnostics())
 }
 
+impl<'p> ast::Ident<'p> {
+    fn nt_string(&self) -> r::NonterminalString {
+        r::NonterminalString(Atom::from(self.as_str()))
+    }
+}
+
+fn span_of(n: ::parse_tree::Node) -> Span {
+    let r = n.range();
+    let s: u32 = r.start().into();
+    let e: u32 = r.end().into();
+    Span(s as usize, e as usize)
+}
+
 fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
     let start_nonterminals = {
         let start = a.start_symbol(file)?;
-        let nt = r::NonterminalString(Atom::from(start.as_str()));
+        let nt = start.nt_string();
         let mut m = Map::new();
         m.insert(nt.clone(), nt);
         m
@@ -65,6 +81,26 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
 
     let intern_token = a.lexer_dfa(file);
 
+    let nonterminals = {
+        let mut m = Map::new();
+        for r in file.rules() {
+            let name = r.name().nt_string();
+            let data = r::NonterminalData {
+                name: name.clone(),
+                visibility: if Some(r.name()) == a.start_symbol(file) {
+                    r::Visibility::Pub(None)
+                } else {
+                    r::Visibility::Priv
+                },
+                span: span_of(r.node()),
+                annotations: Vec::new(),
+                productions: lower_productions(a, r),
+            };
+            m.insert(name, data);
+        }
+        m
+    };
+
     let g = r::Grammar {
         prefix: String::new(),
         algorithm: r::Algorithm {
@@ -84,7 +120,7 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
             bits: Map::new(),
         },
         symbols,
-        nonterminals: Map::new(),
+        nonterminals,
         token_span: Span(0, 0),
         conversions: Map::new(),
         types: r::Types::new(
@@ -102,4 +138,17 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
         module_attributes: Vec::new(),
     };
     Some(g)
+}
+
+fn lower_productions(a: &mut Analysis, rule: ast::RuleDef) -> Vec<r::Production> {
+    rule.alts().map(|alt| lower_production(a, alt, rule.name())).collect()
+}
+
+fn lower_production(a: &mut Analysis, alt: ast::Expr, nt: ast::Ident) -> r::Production {
+    r::Production {
+        nonterminal: nt.nt_string(),
+        symbols: vec![],
+        action: r::ActionFn::new(0),
+        span: span_of(alt.node()),
+    }
 }

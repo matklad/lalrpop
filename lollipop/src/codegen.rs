@@ -64,15 +64,8 @@ fn emit_recursive_ascent(
         // We generate these, so there should always be exactly 1
         // production. Otherwise the LR(1) algorithm doesn't know
         // where to stop!
-//        assert_eq!(grammar.productions_for(start_nt).len(), 1);
-//
-//        log!(
-//            session,
-//            Verbose,
-//            "Building states for public nonterminal `{}`",
-//            user_nt
-//        );
-//
+        assert_eq!(grammar.productions_for(start_nt).len(), 1);
+
 //        let _lr1_tls = lr1::Lr1Tls::install(grammar.terminals.clone());
 //
 //        let lr1result = lr1::build_states(&grammar, start_nt.clone());

@@ -6,6 +6,7 @@ use lalrpop::{
     lexer::{
         re,
         dfa::{self, DFA, Precedence, DFAConstructionError},
+        nfa::NFAConstructionError::*,
     },
 };
 use parse_tree::TextRange;
@@ -117,12 +118,6 @@ impl Analysis {
 
         Some(InternToken { dfa, match_entries })
     }
-}
-
-fn as_span(r: TextRange) -> Span {
-    let s: u32 = r.start().into();
-    let e: u32 = r.end().into();
-    Span(s as usize, e as usize)
 }
 
 /// Data summarizing the `match { }` block, along with any literals we
