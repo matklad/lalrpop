@@ -1,4 +1,5 @@
-// auto-generated: "lalrpop 0.15.1"
+// auto-generated: "lalrpop 0.15.2"
+// sha256: 684b76e8af83f7b1bdfe46fc23bfc5c88f1aff7f4733ac96ea15b4bf11b6d
 #[allow(unused_extern_crates)]
 extern crate lalrpop_util as __lalrpop_util;
 
@@ -582,82 +583,25 @@ mod __parse__file {
     {
         let (__pop_states, __symbol, __nonterminal) = match -__action {
             1 => {
-                (|| {
-                    // (pipe_t expr) = pipe_t, expr => ActionFn(36);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action36::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant1(__nt), __end);
-                    (2, __symbol, 0)
-                })()
+                __reduce1(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             2 => {
-                (|| {
-                    // (pipe_t expr)* =  => ActionFn(34);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action34::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant2(__nt), __end);
-                    (0, __symbol, 1)
-                })()
+                __reduce2(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             3 => {
-                (|| {
-                    // (pipe_t expr)* = (pipe_t expr)+ => ActionFn(35);
-                    let __sym0 = __pop_Variant2(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action35::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant2(__nt), __end);
-                    (1, __symbol, 1)
-                })()
+                __reduce3(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             4 => {
-                (|| {
-                    // (pipe_t expr)+ = pipe_t, expr => ActionFn(49);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action49::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant2(__nt), __end);
-                    (2, __symbol, 2)
-                })()
+                __reduce4(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             5 => {
-                (|| {
-                    // (pipe_t expr)+ = (pipe_t expr)+, pipe_t, expr => ActionFn(50);
-                    let __sym2 = __pop_Variant3(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant2(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym2.2.clone();
-                    let __nt = super::__action50::<E>(events, input, __sym0, __sym1, __sym2);
-                    let __symbol = (__start, __Symbol::Variant2(__nt), __end);
-                    (3, __symbol, 2)
-                })()
+                __reduce5(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             6 => {
-                (|| {
-                    // @L =  => ActionFn(28);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action28::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (0, __symbol, 3)
-                })()
+                __reduce6(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             7 => {
-                (|| {
-                    // @R =  => ActionFn(29);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action29::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (0, __symbol, 4)
-                })()
+                __reduce7(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             8 => {
                 // __file = file => ActionFn(0);
@@ -668,526 +612,142 @@ mod __parse__file {
                 return Some(Ok(__nt));
             }
             9 => {
-                (|| {
-                    // _atom = word_t => ActionFn(11);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action11::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 6)
-                })()
+                __reduce9(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             10 => {
-                (|| {
-                    // _atom = ident_t => ActionFn(12);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action12::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 6)
-                })()
+                __reduce10(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             11 => {
-                (|| {
-                    // _atom = paren_expr => ActionFn(13);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action13::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 6)
-                })()
+                __reduce11(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             12 => {
-                (|| {
-                    // _token_re = word_t => ActionFn(4);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action4::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 7)
-                })()
+                __reduce12(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             13 => {
-                (|| {
-                    // _token_re = regex_t => ActionFn(5);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action5::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 7)
-                })()
+                __reduce13(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             14 => {
-                (|| {
-                    // eq_t = eq => ActionFn(66);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action66::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 8)
-                })()
+                __reduce14(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             15 => {
-                (|| {
-                    // expr =  => ActionFn(83);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action83::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (0, __symbol, 9)
-                })()
+                __reduce15(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             16 => {
-                (|| {
-                    // expr = symbol+ => ActionFn(84);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action84::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 9)
-                })()
+                __reduce16(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             17 => {
-                (|| {
-                    // file = tokens_def => ActionFn(81);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action81::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 10)
-                })()
+                __reduce17(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             18 => {
-                (|| {
-                    // file = tokens_def, rule_def+ => ActionFn(82);
-                    let __sym1 = __pop_Variant5(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action82::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (2, __symbol, 10)
-                })()
+                __reduce18(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             19 => {
-                (|| {
-                    // ident_t = ident => ActionFn(67);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action67::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 11)
-                })()
+                __reduce19(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             20 => {
-                (|| {
-                    // l_curly_t = l_curly => ActionFn(68);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action68::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 12)
-                })()
+                __reduce20(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             21 => {
-                (|| {
-                    // l_paren_t = l_paren => ActionFn(69);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action69::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 13)
-                })()
+                __reduce21(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             22 => {
-                (|| {
-                    // op = qmark_t => ActionFn(9);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action9::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 14)
-                })()
+                __reduce22(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             23 => {
-                (|| {
-                    // op = star_t => ActionFn(10);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action10::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 14)
-                })()
+                __reduce23(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             24 => {
-                (|| {
-                    // op? = op => ActionFn(30);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action30::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant4(__nt), __end);
-                    (1, __symbol, 15)
-                })()
+                __reduce24(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             25 => {
-                (|| {
-                    // op? =  => ActionFn(31);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action31::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant4(__nt), __end);
-                    (0, __symbol, 15)
-                })()
+                __reduce25(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             26 => {
-                (|| {
-                    // paren_expr = l_paren_t, expr, r_paren_t => ActionFn(14);
-                    let __sym2 = __pop_Variant3(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym2.2.clone();
-                    let __nt = super::__action14::<E>(events, input, __sym0, __sym1, __sym2);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (3, __symbol, 16)
-                })()
+                __reduce26(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             27 => {
-                (|| {
-                    // pipe_t = pipe => ActionFn(70);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action70::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 17)
-                })()
+                __reduce27(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             28 => {
-                (|| {
-                    // qmark_t = qmark => ActionFn(71);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action71::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 18)
-                })()
+                __reduce28(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             29 => {
-                (|| {
-                    // r_curly_t = r_curly => ActionFn(72);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action72::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 19)
-                })()
+                __reduce29(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             30 => {
-                (|| {
-                    // r_paren_t = r_paren => ActionFn(73);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action73::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 20)
-                })()
+                __reduce30(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             31 => {
-                (|| {
-                    // regex_t = regex => ActionFn(74);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action74::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 21)
-                })()
+                __reduce31(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             32 => {
-                (|| {
-                    // rule_def = rule_kw_t, ident_t, eq_t, expr => ActionFn(51);
-                    let __sym3 = __pop_Variant3(__symbols);
-                    let __sym2 = __pop_Variant3(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym3.2.clone();
-                    let __nt = super::__action51::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (4, __symbol, 22)
-                })()
+                __reduce32(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             33 => {
-                (|| {
-                    // rule_def = rule_kw_t, ident_t, eq_t, expr, (pipe_t expr)+ => ActionFn(52);
-                    let __sym4 = __pop_Variant2(__symbols);
-                    let __sym3 = __pop_Variant3(__symbols);
-                    let __sym2 = __pop_Variant3(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym4.2.clone();
-                    let __nt = super::__action52::<E>(events, input, __sym0, __sym1, __sym2, __sym3, __sym4);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (5, __symbol, 22)
-                })()
+                __reduce33(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             34 => {
-                (|| {
-                    // rule_def* =  => ActionFn(39);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action39::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (0, __symbol, 23)
-                })()
+                __reduce34(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             35 => {
-                (|| {
-                    // rule_def* = rule_def+ => ActionFn(40);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action40::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 23)
-                })()
+                __reduce35(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             36 => {
-                (|| {
-                    // rule_def+ = rule_def => ActionFn(41);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action41::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 24)
-                })()
+                __reduce36(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             37 => {
-                (|| {
-                    // rule_def+ = rule_def+, rule_def => ActionFn(42);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action42::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (2, __symbol, 24)
-                })()
+                __reduce37(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             38 => {
-                (|| {
-                    // rule_kw_t = rule_kw => ActionFn(75);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action75::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 25)
-                })()
+                __reduce38(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             39 => {
-                (|| {
-                    // star_t = star => ActionFn(76);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action76::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 26)
-                })()
+                __reduce39(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             40 => {
-                (|| {
-                    // symbol = _atom, op => ActionFn(79);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action79::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (2, __symbol, 27)
-                })()
+                __reduce40(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             41 => {
-                (|| {
-                    // symbol = _atom => ActionFn(80);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action80::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 27)
-                })()
+                __reduce41(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             42 => {
-                (|| {
-                    // symbol* =  => ActionFn(32);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action32::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (0, __symbol, 28)
-                })()
+                __reduce42(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             43 => {
-                (|| {
-                    // symbol* = symbol+ => ActionFn(33);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action33::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 28)
-                })()
+                __reduce43(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             44 => {
-                (|| {
-                    // symbol+ = symbol => ActionFn(47);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action47::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 29)
-                })()
+                __reduce44(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             45 => {
-                (|| {
-                    // symbol+ = symbol+, symbol => ActionFn(48);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action48::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (2, __symbol, 29)
-                })()
+                __reduce45(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             46 => {
-                (|| {
-                    // token_def = ident_t, eq_t, _token_re => ActionFn(3);
-                    let __sym2 = __pop_Variant3(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym2.2.clone();
-                    let __nt = super::__action3::<E>(events, input, __sym0, __sym1, __sym2);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (3, __symbol, 30)
-                })()
+                __reduce46(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             47 => {
-                (|| {
-                    // token_def* =  => ActionFn(37);
-                    let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
-                    let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
-                    let __nt = super::__action37::<E>(events, input, &__start, &__end);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (0, __symbol, 31)
-                })()
+                __reduce47(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             48 => {
-                (|| {
-                    // token_def* = token_def+ => ActionFn(38);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action38::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 31)
-                })()
+                __reduce48(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             49 => {
-                (|| {
-                    // token_def+ = token_def => ActionFn(43);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action43::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (1, __symbol, 32)
-                })()
+                __reduce49(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             50 => {
-                (|| {
-                    // token_def+ = token_def+, token_def => ActionFn(44);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant5(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym1.2.clone();
-                    let __nt = super::__action44::<E>(events, input, __sym0, __sym1);
-                    let __symbol = (__start, __Symbol::Variant5(__nt), __end);
-                    (2, __symbol, 32)
-                })()
+                __reduce50(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             51 => {
-                (|| {
-                    // token_kw_t = token_kw => ActionFn(77);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action77::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 33)
-                })()
+                __reduce51(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             52 => {
-                (|| {
-                    // tokens_def = token_kw_t, l_curly_t, r_curly_t => ActionFn(85);
-                    let __sym2 = __pop_Variant3(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym2.2.clone();
-                    let __nt = super::__action85::<E>(events, input, __sym0, __sym1, __sym2);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (3, __symbol, 34)
-                })()
+                __reduce52(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             53 => {
-                (|| {
-                    // tokens_def = token_kw_t, l_curly_t, token_def+, r_curly_t => ActionFn(86);
-                    let __sym3 = __pop_Variant3(__symbols);
-                    let __sym2 = __pop_Variant5(__symbols);
-                    let __sym1 = __pop_Variant3(__symbols);
-                    let __sym0 = __pop_Variant3(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym3.2.clone();
-                    let __nt = super::__action86::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (4, __symbol, 34)
-                })()
+                __reduce53(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             54 => {
-                (|| {
-                    // word_t = word => ActionFn(78);
-                    let __sym0 = __pop_Variant0(__symbols);
-                    let __start = __sym0.0.clone();
-                    let __end = __sym0.2.clone();
-                    let __nt = super::__action78::<E>(events, input, __sym0);
-                    let __symbol = (__start, __Symbol::Variant3(__nt), __end);
-                    (1, __symbol, 35)
-                })()
+                __reduce54(events, input, __action, __lookahead_start, __states, __symbols, ::std::marker::PhantomData::<(E)>)
             }
             _ => panic!("invalid action code {}", __action)
         };
@@ -1264,6 +824,1189 @@ mod __parse__file {
             (__l, __Symbol::Variant0(__v), __r) => (__l, __v, __r),
             _ => panic!("symbol type mismatch")
         }
+    }
+    pub(crate) fn __reduce1<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // (pipe_t expr) = pipe_t, expr => ActionFn(36);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym1.2.clone();
+        let __nt = super::__action36::<E>(events, input, __sym0, __sym1);
+        let __symbol = (__start, __Symbol::Variant1(__nt), __end);
+        (2, __symbol, 0)
+    }
+    pub(crate) fn __reduce2<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // (pipe_t expr)* =  => ActionFn(34);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action34::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant2(__nt), __end);
+        (0, __symbol, 1)
+    }
+    pub(crate) fn __reduce3<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // (pipe_t expr)* = (pipe_t expr)+ => ActionFn(35);
+        let __sym0 = __pop_Variant2(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action35::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant2(__nt), __end);
+        (1, __symbol, 1)
+    }
+    pub(crate) fn __reduce4<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // (pipe_t expr)+ = pipe_t, expr => ActionFn(49);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym1.2.clone();
+        let __nt = super::__action49::<E>(events, input, __sym0, __sym1);
+        let __symbol = (__start, __Symbol::Variant2(__nt), __end);
+        (2, __symbol, 2)
+    }
+    pub(crate) fn __reduce5<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // (pipe_t expr)+ = (pipe_t expr)+, pipe_t, expr => ActionFn(50);
+        let __sym2 = __pop_Variant3(__symbols);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant2(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym2.2.clone();
+        let __nt = super::__action50::<E>(events, input, __sym0, __sym1, __sym2);
+        let __symbol = (__start, __Symbol::Variant2(__nt), __end);
+        (3, __symbol, 2)
+    }
+    pub(crate) fn __reduce6<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // @L =  => ActionFn(28);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action28::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (0, __symbol, 3)
+    }
+    pub(crate) fn __reduce7<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // @R =  => ActionFn(29);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action29::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (0, __symbol, 4)
+    }
+    pub(crate) fn __reduce9<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // _atom = word_t => ActionFn(11);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action11::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 6)
+    }
+    pub(crate) fn __reduce10<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // _atom = ident_t => ActionFn(12);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action12::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 6)
+    }
+    pub(crate) fn __reduce11<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // _atom = paren_expr => ActionFn(13);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action13::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 6)
+    }
+    pub(crate) fn __reduce12<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // _token_re = word_t => ActionFn(4);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action4::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 7)
+    }
+    pub(crate) fn __reduce13<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // _token_re = regex_t => ActionFn(5);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action5::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 7)
+    }
+    pub(crate) fn __reduce14<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // eq_t = eq => ActionFn(66);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action66::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 8)
+    }
+    pub(crate) fn __reduce15<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // expr =  => ActionFn(83);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action83::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (0, __symbol, 9)
+    }
+    pub(crate) fn __reduce16<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // expr = symbol+ => ActionFn(84);
+        let __sym0 = __pop_Variant5(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action84::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 9)
+    }
+    pub(crate) fn __reduce17<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // file = tokens_def => ActionFn(81);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action81::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 10)
+    }
+    pub(crate) fn __reduce18<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // file = tokens_def, rule_def+ => ActionFn(82);
+        let __sym1 = __pop_Variant5(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym1.2.clone();
+        let __nt = super::__action82::<E>(events, input, __sym0, __sym1);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (2, __symbol, 10)
+    }
+    pub(crate) fn __reduce19<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // ident_t = ident => ActionFn(67);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action67::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 11)
+    }
+    pub(crate) fn __reduce20<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // l_curly_t = l_curly => ActionFn(68);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action68::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 12)
+    }
+    pub(crate) fn __reduce21<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // l_paren_t = l_paren => ActionFn(69);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action69::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 13)
+    }
+    pub(crate) fn __reduce22<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // op = qmark_t => ActionFn(9);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action9::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 14)
+    }
+    pub(crate) fn __reduce23<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // op = star_t => ActionFn(10);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action10::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 14)
+    }
+    pub(crate) fn __reduce24<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // op? = op => ActionFn(30);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action30::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant4(__nt), __end);
+        (1, __symbol, 15)
+    }
+    pub(crate) fn __reduce25<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // op? =  => ActionFn(31);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action31::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant4(__nt), __end);
+        (0, __symbol, 15)
+    }
+    pub(crate) fn __reduce26<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // paren_expr = l_paren_t, expr, r_paren_t => ActionFn(14);
+        let __sym2 = __pop_Variant3(__symbols);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym2.2.clone();
+        let __nt = super::__action14::<E>(events, input, __sym0, __sym1, __sym2);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (3, __symbol, 16)
+    }
+    pub(crate) fn __reduce27<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // pipe_t = pipe => ActionFn(70);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action70::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 17)
+    }
+    pub(crate) fn __reduce28<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // qmark_t = qmark => ActionFn(71);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action71::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 18)
+    }
+    pub(crate) fn __reduce29<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // r_curly_t = r_curly => ActionFn(72);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action72::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 19)
+    }
+    pub(crate) fn __reduce30<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // r_paren_t = r_paren => ActionFn(73);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action73::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 20)
+    }
+    pub(crate) fn __reduce31<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // regex_t = regex => ActionFn(74);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action74::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 21)
+    }
+    pub(crate) fn __reduce32<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // rule_def = rule_kw_t, ident_t, eq_t, expr => ActionFn(51);
+        let __sym3 = __pop_Variant3(__symbols);
+        let __sym2 = __pop_Variant3(__symbols);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym3.2.clone();
+        let __nt = super::__action51::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (4, __symbol, 22)
+    }
+    pub(crate) fn __reduce33<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // rule_def = rule_kw_t, ident_t, eq_t, expr, (pipe_t expr)+ => ActionFn(52);
+        let __sym4 = __pop_Variant2(__symbols);
+        let __sym3 = __pop_Variant3(__symbols);
+        let __sym2 = __pop_Variant3(__symbols);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym4.2.clone();
+        let __nt = super::__action52::<E>(events, input, __sym0, __sym1, __sym2, __sym3, __sym4);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (5, __symbol, 22)
+    }
+    pub(crate) fn __reduce34<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // rule_def* =  => ActionFn(39);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action39::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (0, __symbol, 23)
+    }
+    pub(crate) fn __reduce35<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // rule_def* = rule_def+ => ActionFn(40);
+        let __sym0 = __pop_Variant5(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action40::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (1, __symbol, 23)
+    }
+    pub(crate) fn __reduce36<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // rule_def+ = rule_def => ActionFn(41);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action41::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (1, __symbol, 24)
+    }
+    pub(crate) fn __reduce37<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // rule_def+ = rule_def+, rule_def => ActionFn(42);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant5(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym1.2.clone();
+        let __nt = super::__action42::<E>(events, input, __sym0, __sym1);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (2, __symbol, 24)
+    }
+    pub(crate) fn __reduce38<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // rule_kw_t = rule_kw => ActionFn(75);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action75::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 25)
+    }
+    pub(crate) fn __reduce39<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // star_t = star => ActionFn(76);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action76::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 26)
+    }
+    pub(crate) fn __reduce40<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // symbol = _atom, op => ActionFn(79);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym1.2.clone();
+        let __nt = super::__action79::<E>(events, input, __sym0, __sym1);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (2, __symbol, 27)
+    }
+    pub(crate) fn __reduce41<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // symbol = _atom => ActionFn(80);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action80::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 27)
+    }
+    pub(crate) fn __reduce42<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // symbol* =  => ActionFn(32);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action32::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (0, __symbol, 28)
+    }
+    pub(crate) fn __reduce43<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // symbol* = symbol+ => ActionFn(33);
+        let __sym0 = __pop_Variant5(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action33::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (1, __symbol, 28)
+    }
+    pub(crate) fn __reduce44<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // symbol+ = symbol => ActionFn(47);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action47::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (1, __symbol, 29)
+    }
+    pub(crate) fn __reduce45<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // symbol+ = symbol+, symbol => ActionFn(48);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant5(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym1.2.clone();
+        let __nt = super::__action48::<E>(events, input, __sym0, __sym1);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (2, __symbol, 29)
+    }
+    pub(crate) fn __reduce46<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // token_def = ident_t, eq_t, _token_re => ActionFn(3);
+        let __sym2 = __pop_Variant3(__symbols);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym2.2.clone();
+        let __nt = super::__action3::<E>(events, input, __sym0, __sym1, __sym2);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (3, __symbol, 30)
+    }
+    pub(crate) fn __reduce47<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // token_def* =  => ActionFn(37);
+        let __start = __symbols.last().map(|s| s.2.clone()).unwrap_or_default();
+        let __end = __lookahead_start.cloned().unwrap_or_else(|| __start.clone());
+        let __nt = super::__action37::<E>(events, input, &__start, &__end);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (0, __symbol, 31)
+    }
+    pub(crate) fn __reduce48<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // token_def* = token_def+ => ActionFn(38);
+        let __sym0 = __pop_Variant5(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action38::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (1, __symbol, 31)
+    }
+    pub(crate) fn __reduce49<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // token_def+ = token_def => ActionFn(43);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action43::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (1, __symbol, 32)
+    }
+    pub(crate) fn __reduce50<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // token_def+ = token_def+, token_def => ActionFn(44);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant5(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym1.2.clone();
+        let __nt = super::__action44::<E>(events, input, __sym0, __sym1);
+        let __symbol = (__start, __Symbol::Variant5(__nt), __end);
+        (2, __symbol, 32)
+    }
+    pub(crate) fn __reduce51<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // token_kw_t = token_kw => ActionFn(77);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action77::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 33)
+    }
+    pub(crate) fn __reduce52<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // tokens_def = token_kw_t, l_curly_t, r_curly_t => ActionFn(85);
+        let __sym2 = __pop_Variant3(__symbols);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym2.2.clone();
+        let __nt = super::__action85::<E>(events, input, __sym0, __sym1, __sym2);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (3, __symbol, 34)
+    }
+    pub(crate) fn __reduce53<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // tokens_def = token_kw_t, l_curly_t, token_def+, r_curly_t => ActionFn(86);
+        let __sym3 = __pop_Variant3(__symbols);
+        let __sym2 = __pop_Variant5(__symbols);
+        let __sym1 = __pop_Variant3(__symbols);
+        let __sym0 = __pop_Variant3(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym3.2.clone();
+        let __nt = super::__action86::<E>(events, input, __sym0, __sym1, __sym2, __sym3);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (4, __symbol, 34)
+    }
+    pub(crate) fn __reduce54<
+        'input,
+        E,
+    >(
+        events: &mut E,
+        input: &'input str,
+        __action: i8,
+        __lookahead_start: Option<&usize>,
+        __states: &mut ::std::vec::Vec<i8>,
+        __symbols: &mut ::std::vec::Vec<(usize,__Symbol<'input>,usize)>,
+        _: ::std::marker::PhantomData<(E)>,
+    ) -> (usize, (usize,__Symbol<'input>,usize), usize) where
+      E:  __lalrpop_util::LrEvents,
+    {
+        // word_t = word => ActionFn(78);
+        let __sym0 = __pop_Variant0(__symbols);
+        let __start = __sym0.0.clone();
+        let __end = __sym0.2.clone();
+        let __nt = super::__action78::<E>(events, input, __sym0);
+        let __symbol = (__start, __Symbol::Variant3(__nt), __end);
+        (1, __symbol, 35)
     }
 }
 pub use self::__parse__file::fileParser;
