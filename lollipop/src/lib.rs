@@ -6,6 +6,8 @@ extern crate lalrpop;
 extern crate lalrpop_util;
 #[macro_use]
 extern crate parse_tree;
+#[macro_use]
+extern crate failure;
 
 use lalrpop_util::LrEvents;
 use lalrpop_util::Symbol as GSymbol;
@@ -18,6 +20,7 @@ mod ast;
 mod visitor;
 mod analysis;
 mod lower;
+pub mod codegen;
 pub mod ide;
 
 mod symbols {

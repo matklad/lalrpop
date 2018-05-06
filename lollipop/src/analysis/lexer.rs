@@ -2,11 +2,11 @@ use string_cache::DefaultAtom as Atom;
 
 use lalrpop::{
     collections::{Map, Set},
-    grammar::parse_tree::{MatchEntry, TerminalString, TerminalLiteral, Span},
+    grammar::parse_tree::{MatchEntry, TerminalString, TerminalLiteral, Span, InternToken},
     lexer::{
         re,
-        dfa::Precedence,
-    }
+        dfa::{self, DFA, Precedence, DFAConstructionError},
+    },
 };
 use parse_tree::TextRange;
 
@@ -39,7 +39,8 @@ impl Analysis {
         match_block
     }
 
-    pub fn lexer_dfa(&mut self, file: ast::File) {
+    pub fn lexer_dfa(&mut self, file: ast::File) -> Option<InternToken> {
+        let mut proceed = true;
         let match_block = self.match_block(file);
         let MatchBlock {
             mut match_entries,
@@ -64,9 +65,7 @@ impl Analysis {
                         Ok(regex) => regexs.push(regex),
                         Err(error) => {
                             let node = spans[&match_entry.match_literal].node();
-                            // FIXME -- take offset into account for
-                            // span; this requires knowing how many #
-                            // the user used, which we do not track
+                            proceed = false;
                             self.sink.error(
                                 node,
                                 format!("invalid regular expression: {}", error),
@@ -76,6 +75,47 @@ impl Analysis {
                 }
             }
         }
+
+        if !proceed {
+            return None;
+        }
+
+        let dfa = match dfa::build_dfa(&regexs, &precedences) {
+            Ok(dfa) => dfa,
+            Err(DFAConstructionError::NFAConstructionError { index, error }) => {
+                let feature = match error {
+                    NamedCaptures => r#"named captures (`(?P<foo>...)`)"#,
+                    NonGreedy => r#""non-greedy" repetitions (`*?` or `+?`)"#,
+                    WordBoundary => r#"word boundaries (`\b` or `\B`)"#,
+                    LineBoundary => r#"line boundaries (`^` or `$`)"#,
+                    TextBoundary => r#"text boundaries (`^` or `$`)"#,
+                    ByteRegex => r#"byte-based matches"#,
+                };
+                let literal = &match_entries[index.index()].match_literal;
+                let node = spans[&literal].node();
+                self.sink.error(
+                    node,
+                    format!("{} are not supported in regular expressions", feature),
+                );
+                return None;
+            }
+            Err(DFAConstructionError::Ambiguity { match0, match1 }) => {
+                let literal0 = &match_entries[match0.index()].match_literal;
+                let literal1 = &match_entries[match1.index()].match_literal;
+                let node = spans[&literal0].node();
+                self.sink.error(
+                    node,
+                    format!(
+                        "ambiguity detected between the terminal `{}` and the terminal `{}`",
+                        literal0,
+                        literal1
+                    ),
+                );
+                return None;
+            }
+        };
+
+        Some(InternToken { dfa, match_entries })
     }
 }
 

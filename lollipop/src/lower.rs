@@ -10,10 +10,12 @@ use analysis::{
     lexer::MatchBlock,
 };
 use lalrpop::grammar::parse_tree::TerminalLiteral;
+use ide::Diagnostic;
 
-pub fn lower(file: ast::File) -> Option<r::Grammar> {
+pub fn lower(file: ast::File) -> (Option<r::Grammar>, Vec<Diagnostic>) {
     let mut a = Analysis::new();
-    do_lower(&mut a, file)
+    let g = do_lower(&mut a, file);
+    (g, a.diagnostics())
 }
 
 fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
@@ -59,7 +61,7 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
         }]
     };
 
-    a.lexer_dfa(file);
+    let intern_token = a.lexer_dfa(file);
 
     let g = r::Grammar {
         prefix: String::new(),
@@ -73,7 +75,7 @@ fn do_lower(a: &mut Analysis, file: ast::File) -> Option<r::Grammar> {
         type_parameters,
         parameters,
         where_clauses,
-        intern_token: None,
+        intern_token,
         action_fn_defns: Vec::new(),
         terminals: r::TerminalSet {
             all: Vec::new(),

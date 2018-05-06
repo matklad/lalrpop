@@ -20,7 +20,11 @@ impl Analysis {
         let mut a = Analysis::new();
         a.start_symbol(file);
         a.lexer_dfa(file);
-        a.sink.into_diagnostics()
+        a.diagnostics()
+    }
+
+    pub fn diagnostics(self) -> Vec<Diagnostic> {
+        self.sink.into_diagnostics()
     }
 
     pub fn start_symbol<'p>(&mut self, file: ast::File<'p>) -> Option<ast::Ident<'p>> {

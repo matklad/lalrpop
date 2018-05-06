@@ -1,3 +1,7 @@
+use std::{
+    fmt
+};
+
 use parse_tree::{self, ParseTree};
 use super::parse;
 
@@ -18,6 +22,22 @@ pub struct Diagnostic {
     pub range: TextRange,
     pub severity: Severity,
     pub message: String
+}
+
+impl fmt::Display for Diagnostic {
+    fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
+        write!(f, "{}:{}: {}", self.severity, self.range.start(), self.message)?;
+        Ok(())
+    }
+}
+
+impl fmt::Display for Severity {
+    fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
+        match *self {
+            Severity::Error => "error",
+            Severity::Warning => "warning",
+        }.fmt(f)
+    }
 }
 
 pub struct File {
