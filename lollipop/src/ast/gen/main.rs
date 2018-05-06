@@ -101,6 +101,7 @@ fn gen_ast() {
         ("TokensDef", &[("tokens", "TokenDef")]),
         ("TokenDef", &[("name", "Ident"), ("re", "TokenRe")]),
         ("RuleDef", &[("name", "Ident"), ("alts", "Expr")]),
+        ("Expr", &[("symbols", "Symbol")]),
     ];
 
     for &(ref s, ref ms) in methods.iter() {

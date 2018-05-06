@@ -10,6 +10,7 @@ use lalrpop::{
     tls::Tls,
     session::Session,
     file_text::FileText,
+    lexer::intern_token,
 };
 use ::{
     parse,
@@ -40,6 +41,12 @@ pub fn gen(input: String) -> Result<String> {
     };
     println!("lowered!");
     emit_recursive_ascent(&grammar)
+}
+
+macro_rules! rust {
+    ($w:expr, $($args:tt)*) => {
+        try!(($w).writeln(&::std::fmt::format(format_args!($($args)*))))
+    }
 }
 
 fn emit_recursive_ascent(
@@ -91,33 +98,32 @@ fn emit_recursive_ascent(
             }
         };
 
-//        lr1::codegen::ascent::compile(
-//            &grammar,
-//            user_nt.clone(),
-//            start_nt.clone(),
-//            &states,
-//            "super",
-//            &mut rust,
-//        )?;
-//
-//        rust!(
-//            rust,
-//            "{}use self::{}parse{}::{}Parser;",
-//            grammar.nonterminals[&user_nt].visibility,
-//            grammar.prefix,
-//            start_nt,
-//            user_nt
-//        );
+        lr1::codegen::ascent::compile(
+            &grammar,
+            user_nt.clone(),
+            start_nt.clone(),
+            &states,
+            "super",
+            &mut rust,
+        )?;
+
+        rust!(
+            rust,
+            "{}use self::{}parse{}::{}Parser;",
+            grammar.nonterminals[&user_nt].visibility,
+            grammar.prefix,
+            start_nt,
+            user_nt
+        );
     }
-//
-//    if let Some(ref intern_token) = grammar.intern_token {
-//        try!(intern_token::compile(&grammar, intern_token, &mut rust));
-//        rust!(rust, "pub use self::{}intern_token::Token;", grammar.prefix);
-//    }
-//
-//    try!(action::emit_action_code(grammar, &mut rust));
-//
-//    try!(emit_to_triple_trait(grammar, &mut rust));
+
+    if let Some(ref intern_token) = grammar.intern_token {
+        intern_token::compile(&grammar, intern_token, &mut rust)?;
+        rust!(rust, "pub use self::{}intern_token::Token;", grammar.prefix);
+    }
+
+    build::action::emit_action_code(grammar, &mut rust)?;
+    build::emit_to_triple_trait(grammar, &mut rust)?;
     let bytes = rust.into_inner();
     let text = String::from_utf8(bytes).unwrap();
     Ok(text)

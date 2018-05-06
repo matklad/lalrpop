@@ -18,6 +18,9 @@ pub struct RuleDef<'p>(Node<'p>);
 pub struct Expr<'p>(Node<'p>);
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ParenExpr<'p>(Node<'p>);
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Symbol<'p>(Node<'p>);
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -43,7 +46,7 @@ pub enum TokenRe<'p> {
 pub enum Atom<'p> {
     Word(Word<'p>),
     Ident(Ident<'p>),
-    Expr(Expr<'p>),
+    ParenExpr(ParenExpr<'p>),
 }
 
 impl<'p> AstNode<'p> for File<'p> {
@@ -77,6 +80,13 @@ impl<'p> AstNode<'p> for RuleDef<'p> {
 impl<'p> AstNode<'p> for Expr<'p> {
     fn cast(node: Node<'p>) -> Option<Self> where Self: Sized {
         if node.symbol() == EXPR { Some(Expr(node)) } else { None }
+    }
+    fn node(self) -> Node<'p> { self.0 }
+}
+
+impl<'p> AstNode<'p> for ParenExpr<'p> {
+    fn cast(node: Node<'p>) -> Option<Self> where Self: Sized {
+        if node.symbol() == PAREN_EXPR { Some(ParenExpr(node)) } else { None }
     }
     fn node(self) -> Node<'p> { self.0 }
 }
@@ -134,14 +144,14 @@ impl<'p> AstNode<'p> for Atom<'p> {
     fn cast(node: Node<'p>) -> Option<Self> where Self: Sized {
         if let Some(n) = Word::cast(node) { return Some(Atom::Word(n)); }
         if let Some(n) = Ident::cast(node) { return Some(Atom::Ident(n)); }
-        if let Some(n) = Expr::cast(node) { return Some(Atom::Expr(n)); }
+        if let Some(n) = ParenExpr::cast(node) { return Some(Atom::ParenExpr(n)); }
         None
     }
     fn node(self) -> Node<'p> {
         match self {
             Atom::Word(n) => n.node(),
             Atom::Ident(n) => n.node(),
-            Atom::Expr(n) => n.node(),
+            Atom::ParenExpr(n) => n.node(),
         }
     }
 }
@@ -172,6 +182,11 @@ impl<'p> RuleDef<'p> {
         AstChildren::new(self.node().children()).next().unwrap()
     }
     pub fn alts(&self) -> AstChildren<'p, Expr<'p>> {
+        AstChildren::new(self.node().children())
+    }
+}
+impl<'p> Expr<'p> {
+    pub fn symbols(&self) -> AstChildren<'p, Symbol<'p>> {
         AstChildren::new(self.node().children())
     }
 }

@@ -24,7 +24,7 @@ use std::path::{Path, PathBuf};
 use std::process::exit;
 use std::rc::Rc;
 
-mod action;
+pub mod action;
 mod fake_term;
 
 use self::fake_term::FakeTerminal;
@@ -472,7 +472,7 @@ fn emit_recursive_ascent(
     Ok(rust.into_inner())
 }
 
-fn emit_to_triple_trait<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
+pub fn emit_to_triple_trait<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
     #![allow(non_snake_case)]
 
     let L = grammar.types.terminal_loc_type();
