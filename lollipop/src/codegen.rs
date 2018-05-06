@@ -40,7 +40,6 @@ pub fn gen(input: String) -> Result<String> {
             bail!("error: failed to compile grammar")
         }
     };
-    println!("lowered!");
     let bytes = build::emit_recursive_ascent(&sess, &grammar, &PathBuf::from("/tmp/report"))?;
     Ok(String::from_utf8(bytes).unwrap())
 }

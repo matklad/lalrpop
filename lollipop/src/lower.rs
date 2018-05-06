@@ -55,6 +55,7 @@ impl<'p> LowerCtx<'p> {
     }
 
     fn lower(&mut self) -> Option<r::Grammar> {
+        let prefix = String::from("__");
         let start_symbol = self.analysis.start_symbol(self.file)?;
         let start_nonterminals = {
             let nt = start_symbol.nt_string();
@@ -65,27 +66,50 @@ impl<'p> LowerCtx<'p> {
 
         let e = Atom::from("E");
         let e_type_repr = r::TypeRepr::Nominal(r::NominalTypeRepr {
-            path: pt::Path {
+            path: r::Path {
                 absolute: false,
                 ids: vec![e.clone()],
             },
             types: Vec::new(),
         });
-        let type_parameters = vec![pt::TypeParameter::Id(e.clone())];
+        let input_lifetime = Atom::from("'input");
+        let type_parameters = vec![
+            pt::TypeParameter::Lifetime(input_lifetime.clone()),
+            pt::TypeParameter::Id(e.clone()),
+        ];
         let parameters = {
-            let ty = r::TypeRepr::Ref {
-                lifetime: None,
-                mutable: true,
-                referent: Box::new(e_type_repr.clone()),
+            let input = r::Parameter {
+                name: Atom::from("input"),
+                ty: r::TypeRepr::Ref {
+                    lifetime: Some(input_lifetime),
+                    mutable: false,
+                    referent: Box::new(
+                        r::TypeRepr::Nominal(
+                            r::NominalTypeRepr {
+                                path: r::Path {
+                                    absolute: false,
+                                    ids: vec![Atom::from("str")],
+                                },
+                                types: Vec::new(),
+                            })),
+                },
             };
-            vec![r::Parameter { name: Atom::from("events"), ty }]
+            let events = r::Parameter {
+                name: Atom::from("events"),
+                ty: r::TypeRepr::Ref {
+                    lifetime: None,
+                    mutable: true,
+                    referent: Box::new(e_type_repr.clone()),
+                },
+            };
+            vec![input, events]
         };
         let where_clauses = {
             let bounds = vec![pt::TypeBound::Trait {
                 forall: None,
                 path: pt::Path {
                     absolute: false,
-                    ids: vec![Atom::from("__lalrpop_util") /* TODO: do properly */,
+                    ids: vec![Atom::from(format!("{}lalrpop_util", prefix)) /* TODO: do properly */,
                               Atom::from("LrEvents")],
                 },
                 parameters: vec![],
@@ -138,18 +162,25 @@ impl<'p> LowerCtx<'p> {
                 },
                 ).collect();
 
-        let mut types = r::Types::new(
-            "",
-            None,
-            None,
+        let loc_type = // usize
+            r::TypeRepr::usize();
+        let input_str = // &'input str
+            r::TypeRepr::Ref {
+                lifetime: Some(Atom::from("'input")),
+                mutable: false,
+                referent: Box::new(r::TypeRepr::str()),
+            };
+        let enum_type = // Token<'input>
             r::TypeRepr::Nominal(r::NominalTypeRepr {
                 path: r::Path {
                     absolute: false,
-                    ids: vec![],
+                    ids: vec![Atom::from("Token")],
                 },
-                types: vec![],
-            }),
-        );
+                types: vec![r::TypeRepr::Lifetime(Atom::from("'input"))],
+            });
+
+        let mut types = r::Types::new(&prefix, Some(loc_type), None, enum_type);
+
         let nonterminals = {
             let mut m = Map::new();
             for r in self.file.rules() {
@@ -165,7 +196,7 @@ impl<'p> LowerCtx<'p> {
                     annotations: Vec::new(),
                     productions: self.lower_productions(r),
                 };
-                types.add_type(name.clone(), usize_type());
+                types.add_type(name.clone(), r::TypeRepr::usize());
                 m.insert(name, data);
             }
             m
@@ -180,10 +211,10 @@ impl<'p> LowerCtx<'p> {
         let terminal_bits: Map<_, _> = all_terminals.iter().cloned().zip(0..).collect();
 
         let g = r::Grammar {
-            prefix: String::new(),
+            prefix,
             algorithm: r::Algorithm {
                 lalr: false,
-                codegen: r::LrCodeGeneration::RecursiveAscent,
+                codegen: r::LrCodeGeneration::TableDriven,
             },
             uses_error_recovery: false,
             start_nonterminals,
@@ -236,21 +267,11 @@ impl<'p> LowerCtx<'p> {
         };
         let def = r::ActionFnDefn {
             fallible: false,
-            ret_type: usize_type(),
+            ret_type: r::TypeRepr::usize(),
             kind: r::ActionFnDefnKind::User(kind),
         };
         let id = self.action_fn_defns.len();
         self.action_fn_defns.push(def);
         r::ActionFn::new(id)
     }
-}
-
-fn usize_type() -> r::TypeRepr {
-    r::TypeRepr::Nominal(r::NominalTypeRepr {
-        path: pt::Path {
-            absolute: false,
-            ids: vec![Atom::from("usize")],
-        },
-        types: Vec::new(),
-    })
 }

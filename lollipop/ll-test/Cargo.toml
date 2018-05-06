@@ -1,0 +1,10 @@
+[package]
+name = "ll-test"
+version = "0.1.0"
+authors = ["Aleksey Kladov <aleksey.kladov@gmail.com>"]
+
+[workspace]
+
+[dependencies]
+lalrpop-util = {path="../../lalrpop-util"}
+regex = "0.2"
