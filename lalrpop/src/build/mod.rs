@@ -162,7 +162,7 @@ fn needs_rebuild(lalrpop_file: &Path, rs_file: &Path) -> io::Result<bool> {
             try!(f.read_line(&mut version_str));
             try!(f.read_line(&mut hash_str));
 
-            Ok(hash_str.trim() != try!(hash_file(&lalrpop_file)) 
+            Ok(hash_str.trim() != try!(hash_file(&lalrpop_file))
                || version_str.trim() != LALRPOP_VERSION_HEADER)
         }
         Err(e) => match e.kind() {
@@ -322,18 +322,18 @@ fn report_content(content: &Content) -> term::Result<()> {
     canvas.write_to(&mut stdout)
 }
 
-fn emit_module_attributes<W: Write>(
+pub fn emit_module_attributes<W: Write>(
     grammar: &r::Grammar,
     rust: &mut RustWrite<W>,
 ) -> io::Result<()> {
     rust.write_module_attributes(grammar)
 }
 
-fn emit_uses<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
+pub fn emit_uses<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
     rust.write_uses("", grammar)
 }
 
-fn emit_symbols<W: Write>(symbols: &[String], rust: &mut RustWrite<W>) -> io::Result<()> {
+pub fn emit_symbols<W: Write>(symbols: &[String], rust: &mut RustWrite<W>) -> io::Result<()> {
     rust!(rust, r#"
 trait S {{ fn s(&self) -> usize; }}
 impl S for usize {{ fn s(&self) -> usize {{ *self }} }}

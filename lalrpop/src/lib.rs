@@ -29,12 +29,12 @@ extern crate docopt;
 
 // hoist the modules that define macros up earlier
 #[macro_use]
-mod rust;
+pub mod rust;
 #[macro_use]
 mod log;
 
 mod api;
-mod build;
+pub mod build;
 pub mod collections;
 mod file_text;
 pub mod grammar;

@@ -1,6 +1,5 @@
 tokens {
   foo = 'foo'
-  bar = r"hello("
 }
 
 rule file = 'foo'
