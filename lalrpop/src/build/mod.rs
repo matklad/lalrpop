@@ -24,7 +24,7 @@ use std::path::{Path, PathBuf};
 use std::process::exit;
 use std::rc::Rc;
 
-pub mod action;
+mod action;
 mod fake_term;
 
 use self::fake_term::FakeTerminal;
@@ -322,18 +322,18 @@ fn report_content(content: &Content) -> term::Result<()> {
     canvas.write_to(&mut stdout)
 }
 
-pub fn emit_module_attributes<W: Write>(
+fn emit_module_attributes<W: Write>(
     grammar: &r::Grammar,
     rust: &mut RustWrite<W>,
 ) -> io::Result<()> {
     rust.write_module_attributes(grammar)
 }
 
-pub fn emit_uses<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
+fn emit_uses<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
     rust.write_uses("", grammar)
 }
 
-pub fn emit_symbols<W: Write>(symbols: &[String], rust: &mut RustWrite<W>) -> io::Result<()> {
+fn emit_symbols<W: Write>(symbols: &[String], rust: &mut RustWrite<W>) -> io::Result<()> {
     rust!(rust, r#"
 trait S {{ fn s(&self) -> usize; }}
 impl S for usize {{ fn s(&self) -> usize {{ *self }} }}
@@ -472,7 +472,7 @@ pub fn emit_recursive_ascent(
     Ok(rust.into_inner())
 }
 
-pub fn emit_to_triple_trait<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
+fn emit_to_triple_trait<W: Write>(grammar: &r::Grammar, rust: &mut RustWrite<W>) -> io::Result<()> {
     #![allow(non_snake_case)]
 
     let L = grammar.types.terminal_loc_type();
