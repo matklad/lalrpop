@@ -356,7 +356,7 @@ macro_rules! s {{
 }
 
 
-fn emit_recursive_ascent(
+pub fn emit_recursive_ascent(
     session: &Session,
     grammar: &r::Grammar,
     report_file: &Path,
